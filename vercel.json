@@ -1,6 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "npm install",
+  "buildCommand": "",
+  "outputDirectory": ".",
   "rewrites": [
     { "source": "/health", "destination": "/api/health" },
     { "source": "/onboarding/plan", "destination": "/api/onboarding/plan" },
