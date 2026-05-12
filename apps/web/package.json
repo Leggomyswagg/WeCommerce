@@ -1,0 +1,10 @@
+{
+  "name": "@hmo/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node src/server.js",
+    "build": "echo web build placeholder"
+  }
+}
