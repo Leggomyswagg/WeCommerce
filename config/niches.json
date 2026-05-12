@@ -1,0 +1,14 @@
+{
+  "niches": [
+    {"name": "Health & Wellness", "top_item_archetype": "Posture corrector / wellness wearable"},
+    {"name": "Beauty & Skincare", "top_item_archetype": "LED skincare tool"},
+    {"name": "Home & Kitchen", "top_item_archetype": "Space-saving kitchen organizer"},
+    {"name": "Pet Products", "top_item_archetype": "Interactive pet feeder/toy"},
+    {"name": "Baby & Parenting", "top_item_archetype": "Portable baby soothing device"},
+    {"name": "Fitness & Recovery", "top_item_archetype": "Smart resistance training kit"},
+    {"name": "Tech Accessories", "top_item_archetype": "Magnetic charging ecosystem"},
+    {"name": "Outdoor & Travel", "top_item_archetype": "Compact travel utility gear"},
+    {"name": "Fashion Accessories", "top_item_archetype": "Personalized jewelry/accessory set"},
+    {"name": "Eco-friendly Living", "top_item_archetype": "Reusable home essentials bundle"}
+  ]
+}
