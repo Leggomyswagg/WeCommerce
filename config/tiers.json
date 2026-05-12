@@ -1,0 +1,51 @@
+{
+  "free": {
+    "name": "Free",
+    "monthly_price_usd": 0,
+    "store_limit": 1,
+    "niche_limit": 1,
+    "includes_ai_mentor": false,
+    "includes_autonomous_ops": "limited",
+    "stripe_integration": true,
+    "features": [
+      "Starter storefront generation",
+      "Basic landing page templates",
+      "Manual product imports",
+      "Basic SEO field suggestions"
+    ]
+  },
+  "premium": {
+    "name": "Premium",
+    "monthly_price_usd": 299,
+    "store_limit": 3,
+    "niche_limit": 1,
+    "includes_ai_mentor": true,
+    "includes_autonomous_ops": true,
+    "stripe_integration": true,
+    "features": [
+      "AI mentor explanations",
+      "Autonomous store optimization",
+      "Supplier import automation",
+      "SEO/alt-text generation",
+      "Ad copy and creative brief generation",
+      "Conversion roadmap and founder coaching"
+    ]
+  },
+  "ultra": {
+    "name": "Ultra",
+    "monthly_price_usd": 999,
+    "store_limit": 10,
+    "niche_limit": 5,
+    "includes_ai_mentor": true,
+    "includes_autonomous_ops": "advanced",
+    "stripe_integration": true,
+    "features": [
+      "Multi-niche store operations",
+      "Advanced experimentation engine",
+      "Multi-channel campaign orchestration",
+      "High-volume catalog automation",
+      "Custom AI agent workflows",
+      "Executive growth intelligence dashboards"
+    ]
+  }
+}
