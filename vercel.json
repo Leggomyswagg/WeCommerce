@@ -1,7 +1,15 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "echo skip",
+  "version": 2,
+  "framework": null,
+  "installCommand": "npm install --no-audit --no-fund",
+  "buildCommand": "mkdir -p public && echo 'build ok'",
   "outputDirectory": "public",
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "@vercel/node@3.2.0"
+    }
+  },
   "rewrites": [
     { "source": "/health", "destination": "/api/health" },
     { "source": "/onboarding/plan", "destination": "/api/onboarding/plan" }
