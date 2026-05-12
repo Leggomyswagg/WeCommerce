@@ -1,0 +1,10 @@
+{
+  "name": "@hmo/workers",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node index.js",
+    "build": "echo workers build placeholder"
+  }
+}
