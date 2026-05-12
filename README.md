@@ -1,5 +1,3 @@
-# WeCommerce
-ai e-commerce automation assistant
 # HybridMentorOps Agent for E-commerce Founders
 
 An AI system that **builds and runs an e-commerce business** while simultaneously **teaching the founder** at every step.
@@ -131,6 +129,9 @@ Certain decisions must be routed to founder approval:
 - `config/niches.json` – top 10 niches and top product archetypes.
 - `prompts/system_mentor_operator.md` – system prompt for hybrid behavior.
 
+- `docs/build_guide.md` – founder guide for turning AI output into a live website/app.
+- `docs/implementation_quickstart.md` – runnable monorepo setup + GitHub push steps.
+
 ---
 
 ## Next build steps
@@ -141,5 +142,4 @@ Certain decisions must be routed to founder approval:
 4. Add ad platform connectors (Google Ads, Meta, TikTok).
 5. Add Founder Dashboard with Explain/Approve/Execute UX.
 6. Add competency progression engine and curriculum unlocks.
-
 
