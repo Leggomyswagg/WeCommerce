@@ -3,7 +3,7 @@
   "version": 2,
   "framework": null,
   "installCommand": "npm install --no-audit --no-fund",
-  "buildCommand": "mkdir -p public && echo '<!doctype html><meta charset=utf-8><title>WeCommerce API</title><h1>WeCommerce API</h1><p>Service is up.</p><ul><li><a href=/api/health>/api/health</a></li><li><a href=/api/onboarding/plan>/api/onboarding/plan</a></li></ul>' > public/index.html",
+  "buildCommand": "mkdir -p public && touch public/index.html",
   "outputDirectory": "public",
   "functions": {
     "api/**/*.js": {
