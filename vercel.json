@@ -3,13 +3,8 @@
   "version": 2,
   "framework": null,
   "installCommand": "npm install --no-audit --no-fund",
-  "buildCommand": "mkdir -p public && touch public/index.html",
+  "buildCommand": "test -f public/index.html || (mkdir -p public && echo ok > public/index.html)",
   "outputDirectory": "public",
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "@vercel/node@3.2.0"
-    }
-  },
   "rewrites": [
     { "source": "/health", "destination": "/api/health" },
     { "source": "/onboarding/plan", "destination": "/api/onboarding/plan" }
