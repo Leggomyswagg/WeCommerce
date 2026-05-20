@@ -1,26 +1,554 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>WeCommerce API</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── SEO ── -->
+  <title>WeCommerce — AI-Powered E-commerce Platform for Founders | HybridMentorOps</title>
+  <meta name="description" content="WeCommerce is an AI-powered platform that builds and runs your e-commerce store while teaching you as a founder at every step. Automated operations, AI mentor, Shopify and Stripe integration included." />
+  <meta name="keywords" content="AI e-commerce platform, dropshipping automation, AI business mentor, Shopify automation, Stripe e-commerce, founder dashboard, WeCommerce, HybridMentorOps" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://wecommerce.io/" />
+
+  <!-- ── Open Graph ── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://wecommerce.io/" />
+  <meta property="og:title" content="WeCommerce — AI E-commerce Platform for Founders" />
+  <meta property="og:description" content="Build a thriving e-commerce business while learning every step. WeCommerce automates your store while an AI mentor explains every decision." />
+  <meta property="og:image" content="https://wecommerce.io/og-image.jpg" />
+  <meta property="og:image:alt" content="WeCommerce Founder Dashboard — AI-powered e-commerce operations and mentorship interface" />
+  <meta property="og:site_name" content="WeCommerce" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- ── Twitter Card ── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="WeCommerce — AI E-commerce Platform for Founders" />
+  <meta name="twitter:description" content="Build a thriving e-commerce business while learning every step." />
+  <meta name="twitter:image" content="https://wecommerce.io/og-image.jpg" />
+  <meta name="twitter:image:alt" content="WeCommerce Founder Dashboard showing the AI mentor and operator interface" />
+
+  <!-- ── Schema.org Structured Data ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "WeCommerce",
+        "alternateName": "HybridMentorOps",
+        "url": "https://wecommerce.io",
+        "description": "AI-powered e-commerce platform that builds and runs your store while teaching you as a founder."
+      },
+      {
+        "@type": "WebPage",
+        "url": "https://wecommerce.io/",
+        "name": "WeCommerce — AI E-commerce Platform for Founders",
+        "description": "AI-powered platform that builds and runs your e-commerce store while teaching you as a founder at every step.",
+        "isPartOf": { "@type": "WebSite", "name": "WeCommerce", "url": "https://wecommerce.io" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "WeCommerce",
+        "description": "AI-powered e-commerce platform combining autonomous store operations with a real-time founder mentorship engine.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "offers": [
+          { "@type": "Offer", "name": "Free",    "price": "0",   "priceCurrency": "USD", "description": "Single-niche starter store with guided setup" },
+          { "@type": "Offer", "name": "Premium", "price": "299", "priceCurrency": "USD", "description": "AI mentor plus autonomous store optimisation for serious founders" },
+          { "@type": "Offer", "name": "Ultra",   "price": "999", "priceCurrency": "USD", "description": "Multi-niche operations with advanced growth intelligence dashboards" }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <style>
-    body { font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 640px; margin: 60px auto; padding: 0 24px; color: #1a1a1a; }
-    h1 { margin: 0 0 8px; }
-    .sub { color: #666; margin-bottom: 32px; }
-    ul { padding-left: 20px; }
-    li { padding: 6px 0; }
-    code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; font: 13px ui-monospace, Menlo, monospace; }
-    a { color: #0066cc; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0a0a12;
+      --surface: #13131f;
+      --surf2:   #1c1c2e;
+      --border:  #2a2a40;
+      --accent:  #6c63ff;
+      --acc2:    #ff6584;
+      --text:    #e8e8f0;
+      --muted:   #8888aa;
+      --ok:      #22c55e;
+      --warn:    #f59e0b;
+      --r:       12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── Nav ── */
+    header[role="banner"] {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,10,18,.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav {
+      max-width: 1140px; margin: 0 auto; padding: 0 24px;
+      height: 60px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-size: 18px; font-weight: 800; letter-spacing: -.3px; text-decoration: none;
+      background: linear-gradient(135deg, var(--accent), var(--acc2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 10px 22px; border-radius: 8px;
+      font-size: 14px; font-weight: 600; cursor: pointer; border: none; text-decoration: none;
+      transition: opacity .2s, transform .12s;
+    }
+    .btn:hover   { opacity: .9; transform: translateY(-1px); }
+    .btn:active  { transform: translateY(0); }
+    .btn-primary { background: linear-gradient(135deg, var(--accent), #8b5cf6); color: #fff; }
+    .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
+    .btn-full    { width: 100%; }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center; padding: 110px 24px 90px;
+      background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(108,99,255,.18) 0%, transparent 70%);
+    }
+    .hero-badge {
+      display: inline-block; padding: 4px 14px; border-radius: 100px;
+      border: 1px solid rgba(108,99,255,.45); color: var(--accent);
+      font-size: 11px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-size: clamp(30px, 6vw, 58px); font-weight: 800; line-height: 1.1;
+      max-width: 840px; margin: 0 auto 20px;
+    }
+    .grad {
+      background: linear-gradient(135deg, var(--accent), var(--acc2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero p { font-size: 18px; color: var(--muted); max-width: 580px; margin: 0 auto 38px; }
+    .hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── Layout ── */
+    .section { max-width: 1140px; margin: 0 auto; padding: 80px 24px; }
+    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .section-title { font-size: clamp(22px, 4vw, 34px); font-weight: 700; margin-bottom: 12px; }
+    .section-sub   { color: var(--muted); font-size: 16px; max-width: 560px; margin-bottom: 48px; }
+    hr.sep { border: none; border-top: 1px solid var(--border); }
+
+    /* ── Dual-loop cards ── */
+    .loop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .loop-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 30px; }
+    .loop-icon { font-size: 30px; margin-bottom: 14px; display: block; }
+    .loop-card h2 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .loop-card > p { font-size: 14px; color: var(--muted); margin-bottom: 18px; }
+    .loop-items { display: flex; flex-direction: column; gap: 8px; list-style: none; }
+    .loop-item  { background: var(--surf2); border-radius: 8px; padding: 10px 14px; font-size: 13px; border-left: 3px solid var(--accent); }
+
+    /* ── Step cards ── */
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+    .step-card  { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 28px 24px; }
+    .step-num   { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #8b5cf6); color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .step-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+    .step-card p  { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* ── Niche cards ── */
+    .niches-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 14px; }
+    .niche-card  {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 20px;
+      cursor: pointer; transition: border-color .2s, transform .18s, background .2s;
+    }
+    .niche-card:hover   { border-color: var(--accent); transform: translateY(-2px); background: var(--surf2); }
+    .niche-card.selected{ border-color: var(--accent); background: rgba(108,99,255,.1); }
+    .niche-icon  { font-size: 28px; margin-bottom: 10px; display: block; }
+    .niche-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 5px; }
+    .niche-card p  { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+    /* ── Pricing ── */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .tier { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 32px; position: relative; transition: transform .2s; }
+    .tier:hover   { transform: translateY(-4px); }
+    .tier.featured{ border-color: var(--accent); background: linear-gradient(160deg, rgba(108,99,255,.12), rgba(139,92,246,.05)); }
+    .featured-pill{ position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--accent), #8b5cf6); color: #fff; padding: 4px 16px; border-radius: 100px; font-size: 10px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; white-space: nowrap; }
+    .tier-name { font-size: 14px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px; }
+    .tier-price { font-size: 44px; font-weight: 800; margin-bottom: 4px; }
+    .tier-price sup  { font-size: 22px; font-weight: 700; vertical-align: top; margin-top: 10px; display: inline-block; }
+    .tier-price span { font-size: 15px; font-weight: 400; color: var(--muted); }
+    .tier-desc { font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
+    .tier-features { list-style: none; margin-bottom: 32px; }
+    .tier-features li { font-size: 14px; padding: 9px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 10px; }
+    .tier-features li::before { content: "✓"; color: var(--ok); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── Health panel ── */
+    .health-panel  { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 32px; }
+    .health-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 24px; }
+    .health-grid   { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+    .health-item   { background: var(--surf2); border-radius: 8px; padding: 16px; display: flex; align-items: center; gap: 12px; }
+    .dot           { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .dot-green  { background: var(--ok);   box-shadow: 0 0 8px var(--ok); }
+    .dot-yellow { background: var(--warn); box-shadow: 0 0 8px var(--warn); }
+    .dot-grey   { background: var(--muted); }
+    .health-label  { font-size: 13px; font-weight: 600; }
+    .health-status { font-size: 12px; color: var(--muted); }
+
+    /* ── Spinner ── */
+    .spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin .7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Footer ── */
+    footer { text-align: center; padding: 44px 24px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-nav { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 12px; list-style: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 700px) {
+      .loop-grid { grid-template-columns: 1fr; }
+      .nav-links, .nav-cta { display: none; }
+    }
   </style>
 </head>
 <body>
-  <h1>WeCommerce API</h1>
-  <div class="sub">Service is up.</div>
-  <ul>
-    <li><a href="/api/health"><code>GET /api/health</code></a> — service + connector status</li>
-    <li><a href="/api/onboarding/plan"><code>GET /api/onboarding/plan</code></a> — onboarding steps</li>
-  </ul>
+
+<!-- ══════════ HEADER ══════════ -->
+<header role="banner">
+  <nav aria-label="Main navigation">
+    <a href="/" class="logo" aria-label="WeCommerce — AI E-commerce Platform home">WeCommerce ✦ HMO</a>
+    <ul class="nav-links" role="list">
+      <li><a href="#how-it-works">How it works</a></li>
+      <li><a href="#niches">Niches</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#status">Status</a></li>
+    </ul>
+    <a href="#pricing" class="btn btn-primary nav-cta">Get started free</a>
+  </nav>
+</header>
+
+<!-- ══════════ MAIN ══════════ -->
+<main id="main-content">
+
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-badge" role="doc-subtitle">AI Mentor + Operator Platform</div>
+    <h1 id="hero-heading">
+      Build a thriving e-commerce business<br>
+      <span class="grad">while learning every step</span>
+    </h1>
+    <p>
+      WeCommerce is the only AI platform that <strong>runs your store autonomously</strong>
+      while an embedded mentor <strong>teaches you every decision</strong> — from niche
+      selection all the way to scaling campaigns.
+    </p>
+    <div class="hero-ctas">
+      <a href="#pricing" class="btn btn-primary">Start for free</a>
+      <a href="#how-it-works" class="btn btn-outline">See how it works</a>
+    </div>
+  </section>
+
+  <!-- How it works — Dual-loop architecture -->
+  <hr class="sep" />
+  <article class="section" id="how-it-works" aria-labelledby="loop-heading">
+    <p class="section-label">Dual-loop architecture</p>
+    <h2 id="loop-heading" class="section-title">One platform. Two engines working for you.</h2>
+    <p class="section-sub">
+      While the <strong>Operator Loop</strong> runs your business, the
+      <strong>Mentor Loop</strong> explains every action and builds your skills over time.
+    </p>
+    <div class="loop-grid">
+      <div class="loop-card">
+        <span class="loop-icon" role="img" aria-label="Gear icon representing automation">⚙️</span>
+        <h2>Operator Loop</h2>
+        <p>Autonomous execution — handles the daily operations of your store so you don't have to.</p>
+        <ul class="loop-items" aria-label="Operator loop capabilities">
+          <li class="loop-item">Store setup &amp; continuous optimisation</li>
+          <li class="loop-item">SKU imports &amp; product feed management</li>
+          <li class="loop-item">SEO meta, alt-text &amp; ad copy generation</li>
+          <li class="loop-item">Analytics monitoring &amp; conversion loops</li>
+        </ul>
+      </div>
+      <div class="loop-card">
+        <span class="loop-icon" role="img" aria-label="Graduation cap icon representing mentorship">🎓</span>
+        <h2>Mentor Loop</h2>
+        <p>Explains every action, shares rationale and tradeoffs, tracks your competency, and unlocks advanced controls as you grow.</p>
+        <ul class="loop-items" aria-label="Mentor loop capabilities">
+          <li class="loop-item">What I did &amp; why I did it</li>
+          <li class="loop-item">Expected impact &amp; risks</li>
+          <li class="loop-item">Founder approval gates</li>
+          <li class="loop-item">Competency progression unlocks</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- Onboarding steps -->
+  <hr class="sep" />
+  <section class="section" id="onboarding" aria-labelledby="onboarding-heading">
+    <p class="section-label">Onboarding</p>
+    <h2 id="onboarding-heading" class="section-title">Your guided journey to launch</h2>
+    <p class="section-sub">Four AI-guided steps from idea to a live, optimised store — with your mentor explaining every decision.</p>
+    <div id="onboarding-steps" aria-live="polite" aria-label="Onboarding steps">
+      <div style="display:flex;align-items:center;gap:12px;color:var(--muted);">
+        <div class="spinner" role="status" aria-label="Loading onboarding steps"></div>
+        Loading onboarding plan…
+      </div>
+    </div>
+  </section>
+
+  <!-- Niche selector -->
+  <hr class="sep" />
+  <section class="section" id="niches" aria-labelledby="niches-heading">
+    <p class="section-label">Niche selector</p>
+    <h2 id="niches-heading" class="section-title">Find your winning niche</h2>
+    <p class="section-sub">
+      Choose from 10 validated high-revenue niches. The AI validates live demand — trend data,
+      CPC, margin, and fulfilment reliability — before you commit.
+    </p>
+    <div class="niches-grid" id="niches-grid" role="list" aria-label="Available e-commerce niches"></div>
+  </section>
+
+  <!-- Pricing -->
+  <hr class="sep" />
+  <section class="section" id="pricing" aria-labelledby="pricing-heading">
+    <p class="section-label">Pricing</p>
+    <h2 id="pricing-heading" class="section-title">Plans for every stage</h2>
+    <p class="section-sub">Start free and scale as your business grows. All plans include Stripe checkout integration — your keys, your money.</p>
+
+    <div class="pricing-grid">
+      <!-- Free -->
+      <article class="tier" aria-labelledby="tier-free">
+        <p class="tier-name" id="tier-free">Free</p>
+        <div class="tier-price" aria-label="Free — $0 per month"><sup>$</sup>0 <span>/ mo</span></div>
+        <p class="tier-desc">Get started with a single-niche starter store and guided setup. No credit card required.</p>
+        <ul class="tier-features" aria-label="Free plan included features">
+          <li>Starter storefront generation</li>
+          <li>Basic landing page templates</li>
+          <li>Manual product imports</li>
+          <li>Basic SEO field suggestions</li>
+          <li>Stripe checkout (your keys)</li>
+        </ul>
+        <a href="#" class="btn btn-outline btn-full" aria-label="Start WeCommerce for free — no credit card required">Start free</a>
+      </article>
+
+      <!-- Premium -->
+      <article class="tier featured" aria-labelledby="tier-premium">
+        <div class="featured-pill" aria-label="Most popular plan">Most popular</div>
+        <p class="tier-name" id="tier-premium">Premium</p>
+        <div class="tier-price" aria-label="Premium — $299 per month"><sup>$</sup>299 <span>/ mo</span></div>
+        <p class="tier-desc">AI mentor plus autonomous operations for serious founders running up to 3 stores.</p>
+        <ul class="tier-features" aria-label="Premium plan included features">
+          <li>AI mentor explanations on every action</li>
+          <li>Autonomous store optimisation</li>
+          <li>Supplier import automation</li>
+          <li>SEO &amp; alt-text generation</li>
+          <li>Ad copy &amp; creative brief generation</li>
+          <li>Conversion roadmap &amp; founder coaching</li>
+        </ul>
+        <a href="#" class="btn btn-primary btn-full" aria-label="Get WeCommerce Premium for $299 per month">Get Premium</a>
+      </article>
+
+      <!-- Ultra -->
+      <article class="tier" aria-labelledby="tier-ultra">
+        <p class="tier-name" id="tier-ultra">Ultra</p>
+        <div class="tier-price" aria-label="Ultra — $999 per month"><sup>$</sup>999 <span>/ mo</span></div>
+        <p class="tier-desc">Multi-niche operations with advanced growth intelligence for up to 10 stores across 5 niches.</p>
+        <ul class="tier-features" aria-label="Ultra plan included features">
+          <li>Multi-niche store operations (5 niches)</li>
+          <li>Advanced experimentation engine</li>
+          <li>Multi-channel campaign orchestration</li>
+          <li>High-volume catalogue automation</li>
+          <li>Custom AI agent workflows</li>
+          <li>Executive growth intelligence dashboards</li>
+        </ul>
+        <a href="#" class="btn btn-outline btn-full" aria-label="Go Ultra for $999 per month">Go Ultra</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- System status -->
+  <hr class="sep" />
+  <section class="section" id="status" aria-labelledby="status-heading">
+    <p class="section-label">System status</p>
+    <h2 id="status-heading" class="section-title">Platform health</h2>
+    <p class="section-sub">Live status of all platform services and third-party integrations.</p>
+    <div class="health-panel">
+      <div class="health-header">
+        <div>
+          <p style="font-weight:600;margin-bottom:4px;">All systems</p>
+          <p id="overall-status" style="font-size:14px;color:var(--muted);" aria-live="polite">Checking…</p>
+        </div>
+        <button onclick="checkHealth()" class="btn btn-outline" style="font-size:13px;" aria-label="Refresh platform health status">
+          Refresh
+        </button>
+      </div>
+      <div class="health-grid" id="health-grid" aria-live="polite" aria-label="Service health indicators">
+        <div class="health-item">
+          <div class="spinner" role="status" aria-label="Checking service health"></div>
+          <div><p class="health-label">Checking…</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer role="contentinfo">
+  <p>
+    <strong>WeCommerce</strong> · HybridMentorOps AI Platform ·
+    Build your e-commerce business with an AI mentor &amp; operator.
+  </p>
+  <nav aria-label="Footer links">
+    <ul class="footer-nav">
+      <li><a href="/api/health">API Health</a></li>
+      <li><a href="/api/onboarding/plan">Onboarding Plan</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#niches">Niches</a></li>
+      <li><a href="#status">Status</a></li>
+    </ul>
+  </nav>
+</footer>
+
+<script>
+  /* ── Niche data (mirrors config/niches.json) ── */
+  var NICHES = [
+    { name: "Health &amp; Wellness",   archetype: "Posture corrector / wellness wearable",   icon: "💪", iconLabel: "Flexed bicep — Health and Wellness niche" },
+    { name: "Beauty &amp; Skincare",   archetype: "LED skincare tool",                        icon: "✨", iconLabel: "Sparkles — Beauty and Skincare niche" },
+    { name: "Home &amp; Kitchen",      archetype: "Space-saving kitchen organiser",           icon: "🏠", iconLabel: "House — Home and Kitchen niche" },
+    { name: "Pet Products",            archetype: "Interactive pet feeder / toy",             icon: "🐾", iconLabel: "Paw prints — Pet Products niche" },
+    { name: "Baby &amp; Parenting",    archetype: "Portable baby soothing device",            icon: "👶", iconLabel: "Baby — Baby and Parenting niche" },
+    { name: "Fitness &amp; Recovery",  archetype: "Smart resistance training kit",            icon: "🏋️", iconLabel: "Weight lifter — Fitness and Recovery niche" },
+    { name: "Tech Accessories",        archetype: "Magnetic charging ecosystem",             icon: "🔌", iconLabel: "Electric plug — Tech Accessories niche" },
+    { name: "Outdoor &amp; Travel",    archetype: "Compact travel utility gear",             icon: "🌄", iconLabel: "Sunrise over mountains — Outdoor and Travel niche" },
+    { name: "Fashion Accessories",     archetype: "Personalised jewellery / accessory set",  icon: "💎", iconLabel: "Gem — Fashion Accessories niche" },
+    { name: "Eco-friendly Living",     archetype: "Reusable home essentials bundle",         icon: "🌱", iconLabel: "Seedling — Eco-friendly Living niche" }
+  ];
+
+  /* ── Render niches ── */
+  (function () {
+    var grid = document.getElementById('niches-grid');
+    NICHES.forEach(function (n) {
+      var card = document.createElement('div');
+      card.className = 'niche-card';
+      card.setAttribute('role', 'listitem');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', n.name.replace(/&amp;/g, '&') + ' — ' + n.archetype);
+      card.innerHTML =
+        '<span class="niche-icon" role="img" aria-label="' + n.iconLabel + '">' + n.icon + '</span>' +
+        '<h3>' + n.name + '</h3>' +
+        '<p>' + n.archetype + '</p>';
+      card.addEventListener('click', function () {
+        document.querySelectorAll('.niche-card').forEach(function (c) {
+          c.classList.remove('selected');
+          c.setAttribute('aria-pressed', 'false');
+        });
+        card.classList.add('selected');
+        card.setAttribute('aria-pressed', 'true');
+      });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+      });
+      grid.appendChild(card);
+    });
+  })();
+
+  /* ── Load onboarding plan from API (static fallback) ── */
+  var FALLBACK_STEPS = [
+    'Pick your niche and hero product',
+    'Connect your Stripe keys',
+    'Import supplier products',
+    'Generate landing pages and ad assets'
+  ];
+
+  async function loadOnboarding() {
+    var steps = FALLBACK_STEPS;
+    try {
+      var r = await fetch('/api/onboarding/plan');
+      if (r.ok) {
+        var d = await r.json();
+        if (Array.isArray(d.steps) && d.steps.length) steps = d.steps;
+      }
+    } catch (_) {}
+    var grid = document.createElement('div');
+    grid.className = 'steps-grid';
+    steps.forEach(function (s, i) {
+      var card = document.createElement('div');
+      card.className = 'step-card';
+      card.setAttribute('role', 'article');
+      card.setAttribute('aria-label', 'Step ' + (i + 1) + ': ' + s);
+      card.innerHTML =
+        '<div class="step-num" aria-hidden="true">' + (i + 1) + '</div>' +
+        '<h3>' + s + '</h3>' +
+        '<p>Your AI mentor guides you through this step, explains every decision, and flags what needs your approval before acting.</p>';
+      grid.appendChild(card);
+    });
+    var container = document.getElementById('onboarding-steps');
+    container.innerHTML = '';
+    container.appendChild(grid);
+  }
+
+  /* ── Live health check ── */
+  async function checkHealth() {
+    var grid    = document.getElementById('health-grid');
+    var overall = document.getElementById('overall-status');
+    grid.innerHTML =
+      '<div class="health-item">' +
+        '<div class="spinner" role="status" aria-label="Checking services"></div>' +
+        '<div><p class="health-label">Checking…</p></div>' +
+      '</div>';
+    try {
+      var r = await fetch('/api/health');
+      if (!r.ok) throw new Error('non-ok');
+      var d = await r.json();
+      var shopifyOk = d.connectors && d.connectors.shopify;
+      var stripeOk  = d.connectors && d.connectors.stripe;
+      var services = [
+        { label: 'API Server',        status: d.ok       ? 'Operational' : 'Degraded',         ok: !!d.ok },
+        { label: 'Shopify Connector', status: shopifyOk  ? 'Operational' : 'Awaiting config',  ok: !!shopifyOk },
+        { label: 'Stripe Connector',  status: stripeOk   ? 'Operational' : 'Awaiting config',  ok: !!stripeOk },
+        { label: 'Web Service',       status: 'Operational',                                    ok: true }
+      ];
+      grid.innerHTML = services.map(function (s) {
+        return '<div class="health-item">' +
+          '<div class="dot ' + (s.ok ? 'dot-green' : 'dot-yellow') + '" role="img" aria-label="' + s.label + ': ' + s.status + '"></div>' +
+          '<div><p class="health-label">' + s.label + '</p><p class="health-status">' + s.status + '</p></div>' +
+        '</div>';
+      }).join('');
+      overall.textContent = d.ok ? '✓ All systems operational' : '⚠ Some services need configuration';
+      overall.style.color = d.ok ? 'var(--ok)' : 'var(--warn)';
+    } catch (_) {
+      grid.innerHTML =
+        ['API Server', 'Shopify Connector', 'Stripe Connector'].map(function (l) {
+          return '<div class="health-item">' +
+            '<div class="dot dot-grey" role="img" aria-label="' + l + ': Unreachable"></div>' +
+            '<div><p class="health-label">' + l + '</p><p class="health-status">Unreachable</p></div>' +
+          '</div>';
+        }).join('') +
+        '<div class="health-item">' +
+          '<div class="dot dot-green" role="img" aria-label="Web Service: Operational"></div>' +
+          '<div><p class="health-label">Web Service</p><p class="health-status">Operational</p></div>' +
+        '</div>';
+      overall.textContent = '⚠ API not reachable from this origin';
+      overall.style.color = 'var(--warn)';
+    }
+  }
+
+  loadOnboarding();
+  checkHealth();
+</script>
 </body>
 </html>
