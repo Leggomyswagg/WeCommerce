@@ -41,6 +41,13 @@ generate stores or implement the roadmap's supplier, marketing, or billing flows
 Connector status means environment variables are present, not that credentials
 have been verified with a provider.
 
+The existing Vercel projects use `apps/api` and `apps/web` as their Root
+Directories. Each app now includes its own `api/` functions and `vercel.json`;
+its build copies the shared dashboard to its generated `public/` output. A
+project created from the repository root can continue using the root handlers.
+Keep Vercel's "Include source files outside of the Root Directory in the Build
+Step" enabled so both app builds and their functions can use the shared source.
+
 ## 5) Push to GitHub
 
 ```bash

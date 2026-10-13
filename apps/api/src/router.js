@@ -1,5 +1,5 @@
-import { shopifyHealth } from '@hmo/shopify-connector';
-import { stripeHealth } from '@hmo/stripe-connector';
+import { shopifyHealth } from '../../../packages/connectors/shopify/index.js';
+import { stripeHealth } from '../../../packages/connectors/stripe/index.js';
 
 function sendJson(req, res, body) {
   res.setHeader('content-type', 'application/json; charset=utf-8');
