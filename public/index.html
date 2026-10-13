@@ -384,7 +384,7 @@
   <section class="section" id="status" aria-labelledby="status-heading">
     <p class="section-label">System status</p>
     <h2 id="status-heading" class="section-title">Platform health</h2>
-    <p class="section-sub">Live status of all platform services and third-party integrations.</p>
+    <p class="section-sub">API availability and integration configuration. Credentials alone do not verify a live connection.</p>
     <div class="health-panel">
       <div class="health-header">
         <div>
@@ -514,12 +514,12 @@
       var r = await fetch('/api/health');
       if (!r.ok) throw new Error('non-ok');
       var d = await r.json();
-      var shopifyOk = d.connectors && d.connectors.shopify;
-      var stripeOk  = d.connectors && d.connectors.stripe;
+      var shopifyOk = !!(d.connectors && d.connectors.shopify && d.connectors.shopify.configured === true);
+      var stripeOk  = !!(d.connectors && d.connectors.stripe && d.connectors.stripe.configured === true);
       var services = [
         { label: 'API Server',        status: d.ok       ? 'Operational' : 'Degraded',         ok: !!d.ok },
-        { label: 'Shopify Connector', status: shopifyOk  ? 'Operational' : 'Awaiting config',  ok: !!shopifyOk },
-        { label: 'Stripe Connector',  status: stripeOk   ? 'Operational' : 'Awaiting config',  ok: !!stripeOk },
+        { label: 'Shopify Connector', status: shopifyOk  ? 'Configured' : 'Awaiting config',  ok: shopifyOk },
+        { label: 'Stripe Connector',  status: stripeOk   ? 'Configured' : 'Awaiting config',  ok: stripeOk },
         { label: 'Web Service',       status: 'Operational',                                    ok: true }
       ];
       grid.innerHTML = services.map(function (s) {
@@ -528,8 +528,9 @@
           '<div><p class="health-label">' + s.label + '</p><p class="health-status">' + s.status + '</p></div>' +
         '</div>';
       }).join('');
-      overall.textContent = d.ok ? '✓ All systems operational' : '⚠ Some services need configuration';
-      overall.style.color = d.ok ? 'var(--ok)' : 'var(--warn)';
+      var ready = d.ok && shopifyOk && stripeOk;
+      overall.textContent = ready ? '✓ API available · integrations configured' : '⚠ Some services need configuration';
+      overall.style.color = ready ? 'var(--ok)' : 'var(--warn)';
     } catch (_) {
       grid.innerHTML =
         ['API Server', 'Shopify Connector', 'Stripe Connector'].map(function (l) {
