@@ -1,11 +1,1 @@
-export default function handler(req, res) {
-  res.setHeader('content-type', 'application/json');
-  res.status(200).json({
-    steps: [
-      'Pick niche and hero product',
-      'Connect Stripe keys',
-      'Import supplier products',
-      'Generate landing pages and ad assets'
-    ]
-  });
-}
+export { planHandler as default } from './src/router.js';

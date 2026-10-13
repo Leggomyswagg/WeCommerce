@@ -12,8 +12,8 @@
     "dev:web": "npm --workspace @hmo/web run dev",
     "dev:api": "npm --workspace @hmo/api run dev",
     "dev:workers": "npm --workspace @hmo/workers run dev",
-    "build": "npm run -ws --if-present build",
-    "test": "npm run -ws test --if-present"
+    "build": "node scripts/check.mjs",
+    "test": "node --test tests/*.test.mjs"
   },
   "dependencies": {
     "@hmo/shopify-connector": "*",
