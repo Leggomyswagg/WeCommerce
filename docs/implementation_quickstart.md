@@ -12,10 +12,11 @@ npm install
 cp .env.example .env
 ```
 
-Fill in:
-- `SHOPIFY_STORE_DOMAIN`
-- `SHOPIFY_ACCESS_TOKEN`
-- `STRIPE_SECRET_KEY`
+Set `WE_COMMERCE_AUTH_TOKEN` to a long random owner-access token. The root dev
+scripts load `.env`; provider secrets stay on the server. Configure only the
+provider bindings you intend to read. Hosted/serverless use also requires
+`DATABASE_URL` and explicit `npm run db:setup` before startup. See
+[NEXT_BUILD_STEPS.md](NEXT_BUILD_STEPS.md) for all bindings and capability limits.
 
 ## 3) Run apps
 
@@ -35,11 +36,12 @@ from the web origin on port 3000, so no CORS setup or separate browser API URL i
 needed. Root `api/` handlers expose the same responses on Vercel. `/health` and
 `/onboarding/plan` remain aliases on the standalone API.
 
-Run `npm test` for HTTP routing and dashboard status regressions, and `npm run
-build` to check JavaScript syntax. This is a static dashboard; the build does not
-generate stores or implement the roadmap's supplier, marketing, or billing flows.
-Connector status means environment variables are present, not that credentials
-have been verified with a provider.
+Run `npm test` for HTTP, state, approval, worker, and connector regressions; `npm
+run build` checks syntax and generates both app outputs. The authenticated
+dashboard supports persisted intake, margin observations, approved read tasks,
+local drafts/references, and lesson progression. It does not create stores,
+fulfill supplier orders, publish advertisements, or charge subscriptions.
+Connector configuration means bindings are present, not verified provider access.
 
 The existing Vercel projects use `apps/api` and `apps/web` as their Root
 Directories. Each app now includes its own `api/` functions and `vercel.json`;
