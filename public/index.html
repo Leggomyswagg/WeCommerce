@@ -3,505 +3,640 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- ── SEO ── -->
-  <title>WeCommerce — AI-Powered E-commerce Platform for Founders | HybridMentorOps</title>
-  <meta name="description" content="WeCommerce is an AI-powered platform that builds and runs your e-commerce store while teaching you as a founder at every step. Automated operations, AI mentor, Shopify and Stripe integration included." />
-  <meta name="keywords" content="AI e-commerce platform, dropshipping automation, AI business mentor, Shopify automation, Stripe e-commerce, founder dashboard, WeCommerce, HybridMentorOps" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://wecommerce.io/" />
-
-  <!-- ── Open Graph ── -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://wecommerce.io/" />
-  <meta property="og:title" content="WeCommerce — AI E-commerce Platform for Founders" />
-  <meta property="og:description" content="Build a thriving e-commerce business while learning every step. WeCommerce automates your store while an AI mentor explains every decision." />
-  <meta property="og:image" content="https://wecommerce.io/og-image.jpg" />
-  <meta property="og:image:alt" content="WeCommerce Founder Dashboard — AI-powered e-commerce operations and mentorship interface" />
-  <meta property="og:site_name" content="WeCommerce" />
-  <meta property="og:locale" content="en_US" />
-
-  <!-- ── Twitter Card ── -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="WeCommerce — AI E-commerce Platform for Founders" />
-  <meta name="twitter:description" content="Build a thriving e-commerce business while learning every step." />
-  <meta name="twitter:image" content="https://wecommerce.io/og-image.jpg" />
-  <meta name="twitter:image:alt" content="WeCommerce Founder Dashboard showing the AI mentor and operator interface" />
-
-  <!-- ── Schema.org Structured Data ── -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "name": "WeCommerce",
-        "alternateName": "HybridMentorOps",
-        "url": "https://wecommerce.io",
-        "description": "AI-powered e-commerce platform that builds and runs your store while teaching you as a founder."
-      },
-      {
-        "@type": "WebPage",
-        "url": "https://wecommerce.io/",
-        "name": "WeCommerce — AI E-commerce Platform for Founders",
-        "description": "AI-powered platform that builds and runs your e-commerce store while teaching you as a founder at every step.",
-        "isPartOf": { "@type": "WebSite", "name": "WeCommerce", "url": "https://wecommerce.io" }
-      },
-      {
-        "@type": "SoftwareApplication",
-        "name": "WeCommerce",
-        "description": "AI-powered e-commerce platform combining autonomous store operations with a real-time founder mentorship engine.",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web",
-        "offers": [
-          { "@type": "Offer", "name": "Free",    "price": "0",   "priceCurrency": "USD", "description": "Single-niche starter store with guided setup" },
-          { "@type": "Offer", "name": "Premium", "price": "299", "priceCurrency": "USD", "description": "AI mentor plus autonomous store optimisation for serious founders" },
-          { "@type": "Offer", "name": "Ultra",   "price": "999", "priceCurrency": "USD", "description": "Multi-niche operations with advanced growth intelligence dashboards" }
-        ]
-      }
-    ]
-  }
-  </script>
-
+  <title>WeCommerce — Founder workspace</title>
+  <meta name="description" content="Build an e-commerce plan with founder-entered margin observations, approved tasks, read-only connections, local drafts, and guided exercises." />
+  <meta name="theme-color" content="#0a0a12" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:      #0a0a12;
-      --surface: #13131f;
-      --surf2:   #1c1c2e;
-      --border:  #2a2a40;
-      --accent:  #6c63ff;
-      --acc2:    #ff6584;
-      --text:    #e8e8f0;
-      --muted:   #8888aa;
-      --ok:      #22c55e;
-      --warn:    #f59e0b;
-      --r:       12px;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    /* ── Nav ── */
-    header[role="banner"] {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(10,10,18,.92);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-    nav {
-      max-width: 1140px; margin: 0 auto; padding: 0 24px;
-      height: 60px; display: flex; align-items: center; justify-content: space-between;
-    }
-    .logo {
-      font-size: 18px; font-weight: 800; letter-spacing: -.3px; text-decoration: none;
-      background: linear-gradient(135deg, var(--accent), var(--acc2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color .2s; }
-    .nav-links a:hover { color: var(--text); }
-
-    /* ── Buttons ── */
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 10px 22px; border-radius: 8px;
-      font-size: 14px; font-weight: 600; cursor: pointer; border: none; text-decoration: none;
-      transition: opacity .2s, transform .12s;
-    }
-    .btn:hover   { opacity: .9; transform: translateY(-1px); }
-    .btn:active  { transform: translateY(0); }
-    .btn-primary { background: linear-gradient(135deg, var(--accent), #8b5cf6); color: #fff; }
-    .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
-    .btn-full    { width: 100%; }
-
-    /* ── Hero ── */
-    .hero {
-      text-align: center; padding: 110px 24px 90px;
-      background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(108,99,255,.18) 0%, transparent 70%);
-    }
-    .hero-badge {
-      display: inline-block; padding: 4px 14px; border-radius: 100px;
-      border: 1px solid rgba(108,99,255,.45); color: var(--accent);
-      font-size: 11px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; margin-bottom: 22px;
-    }
-    .hero h1 {
-      font-size: clamp(30px, 6vw, 58px); font-weight: 800; line-height: 1.1;
-      max-width: 840px; margin: 0 auto 20px;
-    }
-    .grad {
-      background: linear-gradient(135deg, var(--accent), var(--acc2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .hero p { font-size: 18px; color: var(--muted); max-width: 580px; margin: 0 auto 38px; }
-    .hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-
-    /* ── Layout ── */
-    .section { max-width: 1140px; margin: 0 auto; padding: 80px 24px; }
-    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-    .section-title { font-size: clamp(22px, 4vw, 34px); font-weight: 700; margin-bottom: 12px; }
-    .section-sub   { color: var(--muted); font-size: 16px; max-width: 560px; margin-bottom: 48px; }
-    hr.sep { border: none; border-top: 1px solid var(--border); }
-
-    /* ── Dual-loop cards ── */
-    .loop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .loop-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 30px; }
-    .loop-icon { font-size: 30px; margin-bottom: 14px; display: block; }
-    .loop-card h2 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-    .loop-card > p { font-size: 14px; color: var(--muted); margin-bottom: 18px; }
-    .loop-items { display: flex; flex-direction: column; gap: 8px; list-style: none; }
-    .loop-item  { background: var(--surf2); border-radius: 8px; padding: 10px 14px; font-size: 13px; border-left: 3px solid var(--accent); }
-
-    /* ── Step cards ── */
-    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-    .step-card  { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 28px 24px; }
-    .step-num   { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #8b5cf6); color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-    .step-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
-    .step-card p  { font-size: 13px; color: var(--muted); line-height: 1.5; }
-
-    /* ── Niche cards ── */
-    .niches-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 14px; }
-    .niche-card  {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 20px;
-      cursor: pointer; transition: border-color .2s, transform .18s, background .2s;
-    }
-    .niche-card:hover   { border-color: var(--accent); transform: translateY(-2px); background: var(--surf2); }
-    .niche-card.selected{ border-color: var(--accent); background: rgba(108,99,255,.1); }
-    .niche-icon  { font-size: 28px; margin-bottom: 10px; display: block; }
-    .niche-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 5px; }
-    .niche-card p  { font-size: 12px; color: var(--muted); line-height: 1.4; }
-
-    /* ── Pricing ── */
-    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .tier { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 32px; position: relative; transition: transform .2s; }
-    .tier:hover   { transform: translateY(-4px); }
-    .tier.featured{ border-color: var(--accent); background: linear-gradient(160deg, rgba(108,99,255,.12), rgba(139,92,246,.05)); }
-    .featured-pill{ position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--accent), #8b5cf6); color: #fff; padding: 4px 16px; border-radius: 100px; font-size: 10px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; white-space: nowrap; }
-    .tier-name { font-size: 14px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px; }
-    .tier-price { font-size: 44px; font-weight: 800; margin-bottom: 4px; }
-    .tier-price sup  { font-size: 22px; font-weight: 700; vertical-align: top; margin-top: 10px; display: inline-block; }
-    .tier-price span { font-size: 15px; font-weight: 400; color: var(--muted); }
-    .tier-desc { font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
-    .tier-features { list-style: none; margin-bottom: 32px; }
-    .tier-features li { font-size: 14px; padding: 9px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 10px; }
-    .tier-features li::before { content: "✓"; color: var(--ok); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-
-    /* ── Health panel ── */
-    .health-panel  { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 32px; }
-    .health-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 24px; }
-    .health-grid   { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
-    .health-item   { background: var(--surf2); border-radius: 8px; padding: 16px; display: flex; align-items: center; gap: 12px; }
-    .dot           { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-    .dot-green  { background: var(--ok);   box-shadow: 0 0 8px var(--ok); }
-    .dot-yellow { background: var(--warn); box-shadow: 0 0 8px var(--warn); }
-    .dot-grey   { background: var(--muted); }
-    .health-label  { font-size: 13px; font-weight: 600; }
-    .health-status { font-size: 12px; color: var(--muted); }
-
-    /* ── Spinner ── */
-    .spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin .7s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* ── Footer ── */
-    footer { text-align: center; padding: 44px 24px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); }
-    footer a { color: var(--accent); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-    .footer-nav { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 12px; list-style: none; }
-
-    /* ── Responsive ── */
-    @media (max-width: 700px) {
-      .loop-grid { grid-template-columns: 1fr; }
-      .nav-links, .nav-cta { display: none; }
-    }
+    *, *::before, *::after { box-sizing: border-box; }
+    :root { --bg:#0a0a12; --surface:#13131f; --surf2:#1c1c2e; --border:#303047; --accent:#9b93ff; --acc2:#ff8aa2; --text:#f0f0f8; --muted:#a4a4bf; --ok:#76e0a0; --warn:#ffcf7c; --error:#ffabb9; --r:16px; }
+    html { scroll-behavior:smooth; scroll-padding-top:90px; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.6; }
+    [hidden] { display:none !important; }
+    h1,h2,h3,p { margin:0; }
+    a { color:var(--accent); }
+    button,input,select,textarea { font:inherit; }
+    button,a,input,select,textarea,summary { -webkit-tap-highlight-color:transparent; }
+    :focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+    .skip-link { position:absolute; left:16px; top:-80px; z-index:200; background:var(--text); color:var(--bg); padding:10px 16px; }
+    .skip-link:focus { top:12px; }
+    header { position:sticky; top:0; z-index:100; border-bottom:1px solid var(--border); background:rgba(10,10,18,.95); backdrop-filter:blur(14px); }
+    .top-nav { max-width:1200px; margin:auto; min-height:68px; padding:12px 28px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .logo { color:var(--text); font-size:20px; font-weight:800; letter-spacing:-.7px; text-decoration:none; display:flex; align-items:center; gap:9px; }
+    .logo-mark { color:var(--accent); font-size:24px; }
+    .nav-links { display:flex; align-items:center; gap:22px; list-style:none; margin:0; padding:0; font-size:13px; }
+    .nav-links a { text-decoration:none; color:var(--muted); }
+    .nav-links a:hover { color:var(--text); }
+    .container { max-width:1200px; margin:auto; padding:0 28px; }
+    .intro { padding:65px 0 38px; background:radial-gradient(ellipse at 80% 10%,rgba(130,105,255,.12),transparent 55%); }
+    .eyebrow { color:var(--accent); font-size:11px; font-weight:750; letter-spacing:1.2px; text-transform:uppercase; margin-bottom:10px; }
+    h1 { font-size:clamp(30px,5vw,48px); line-height:1.16; letter-spacing:-1.5px; max-width:740px; }
+    .intro-copy { color:var(--muted); max-width:690px; margin-top:18px; font-size:17px; }
+    .capability-strip { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+    .pill,.badge { display:inline-flex; align-items:center; width:fit-content; flex-shrink:0; border:1px solid var(--border); border-radius:100px; padding:4px 11px; font-size:11px; font-weight:650; }
+    .pill { color:var(--muted); background:var(--surface); }
+    .badge { color:var(--muted); background:var(--surf2); }
+    .badge.proposed { color:var(--warn); }
+    .badge.approved,.badge.available { color:var(--accent); }
+    .badge.succeeded,.badge.completed { color:var(--ok); }
+    .badge.failed,.badge.blocked { color:var(--error); }
+    .access { margin-top:8px; margin-bottom:48px; padding:28px; background:linear-gradient(125deg,rgba(139,115,255,.12),var(--surface) 70%); border:1px solid var(--border); border-radius:var(--r); display:grid; grid-template-columns:1fr 1.1fr; gap:36px; }
+    .access h2 { font-size:21px; margin-bottom:8px; }
+    .subtle { color:var(--muted); font-size:13px; }
+    .access-inputs { display:flex; align-items:flex-end; gap:10px; }
+    .access-inputs .field { flex:1; margin:0; }
+    .btn { min-height:44px; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 17px; border:1px solid transparent; border-radius:9px; cursor:pointer; font-size:13px; font-weight:700; line-height:1.4; text-decoration:none; background:var(--surf2); color:var(--text); }
+    .btn-primary { background:#7668e7; color:#fff; }
+    .btn-outline { border-color:var(--border); background:transparent; }
+    .btn:hover:enabled { filter:brightness(1.13); }
+    .btn:disabled { opacity:.5; cursor:not-allowed; }
+    .field { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; min-width:0; }
+    .field > label,.field-label { font-size:12px; font-weight:650; }
+    input:not([type="checkbox"]),select,textarea { min-width:0; width:100%; min-height:44px; border:1px solid var(--border); border-radius:8px; background:var(--bg); color:var(--text); padding:10px 12px; font-size:14px; }
+    input::placeholder,textarea::placeholder { color:#8e8ea9; }
+    textarea { resize:vertical; min-height:96px; }
+    input:disabled,select:disabled,textarea:disabled { opacity:.7; }
+    input[type="checkbox"] { width:17px; height:17px; accent-color:var(--accent); flex-shrink:0; margin:2px 0 0; }
+    fieldset { border:0; min-width:0; padding:0; margin:0; }
+    legend { font-size:13px; font-weight:700; margin-bottom:12px; }
+    .two-fields { display:grid; grid-template-columns:1fr 1fr; gap:0 16px; }
+    .check { display:flex; align-items:flex-start; gap:9px; font-size:12px; color:var(--muted); margin:12px 0; }
+    .feedback { margin-top:12px; font-size:13px; }
+    .error { color:var(--error); }
+    .success { color:var(--ok); }
+    .workspace { padding-bottom:36px; }
+    .workspace-heading { display:flex; justify-content:space-between; align-items:flex-start; gap:20px; margin:12px 0 24px; }
+    .workspace-heading h2 { font-size:26px; letter-spacing:-.6px; overflow-wrap:anywhere; }
+    .button-row { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+    .workspace-menu { display:flex; gap:8px; flex-wrap:wrap; margin:0 0 26px; }
+    .workspace-menu a { text-decoration:none; padding:8px 13px; border-radius:8px; font-size:12px; color:var(--muted); border:1px solid var(--border); }
+    .workspace-menu a:hover { background:var(--surf2); color:var(--text); }
+    .notice { border:1px solid var(--border); border-radius:10px; background:var(--surface); padding:14px 17px; font-size:13px; margin-bottom:22px; }
+    .notice.error { border-color:#68404b; }
+    .notice .btn { margin-top:12px; }
+    .workspace-status { min-height:25px; font-size:13px; color:var(--accent); margin-bottom:10px; }
+    .workspace-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    .panel { background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:26px; min-width:0; }
+    .panel-wide { grid-column:1 / -1; }
+    .panel-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:22px; }
+    .panel h2 { font-size:20px; letter-spacing:-.35px; }
+    .panel-intro { font-size:13px; color:var(--muted); margin-top:7px; max-width:760px; }
+    .help { margin:8px 0 18px; font-size:12px; color:var(--muted); }
+    .observation { padding:18px; border:1px solid var(--border); border-radius:10px; margin-bottom:15px; background:var(--bg); }
+    .observation-title { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:15px; }
+    .observation-title h3 { font-size:14px; }
+    .observation-fields { display:grid; grid-template-columns:repeat(3,1fr); gap:0 12px; }
+    .observation-fields .field { margin-bottom:12px; }
+    .observation-fields .niche-name { grid-column:1 / -1; }
+    .remove-observation { min-height:36px; padding:6px 9px; font-size:11px; }
+    .score-list { margin-top:22px; display:grid; gap:12px; }
+    .score-card { padding:16px; border:1px solid var(--border); border-radius:10px; }
+    .score-card h3 { font-size:14px; margin-bottom:11px; overflow-wrap:anywhere; }
+    .score-metrics { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:10px; }
+    .score-metric span { display:block; font-size:11px; color:var(--muted); }
+    .score-metric strong { font-size:24px; line-height:1.5; }
+    .score-card p { font-size:12px; color:var(--muted); }
+    .task-layout { display:grid; grid-template-columns:minmax(270px,.8fr) minmax(0,1.25fr); gap:28px; }
+    .task-builder { padding-right:26px; border-right:1px solid var(--border); }
+    .task-list { display:flex; flex-direction:column; gap:16px; min-width:0; }
+    .empty-state { padding:24px; border:1px dashed var(--border); border-radius:12px; font-size:13px; color:var(--muted); }
+    .task-card { padding:21px; background:var(--bg); border:1px solid var(--border); border-radius:12px; min-width:0; }
+    .task-heading { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
+    .task-card h3 { font-size:15px; }
+    .task-steps { font-size:11px; color:var(--accent); margin-bottom:12px; letter-spacing:.3px; }
+    .explanation { margin:0; }
+    .explanation dt { color:var(--muted); font-size:11px; font-weight:700; margin-top:11px; }
+    .explanation dd { font-size:13px; margin:3px 0 0; overflow-wrap:anywhere; }
+    .explanation ul { margin:5px 0 0; padding-left:18px; }
+    details { margin-top:14px; font-size:12px; }
+    summary { cursor:pointer; color:var(--muted); padding:4px 0; }
+    pre { max-height:280px; overflow:auto; white-space:pre-wrap; overflow-wrap:anywhere; margin:8px 0 0; background:var(--surf2); border-radius:7px; padding:13px; color:var(--text); font-size:11px; line-height:1.6; }
+    .result { margin-top:17px; border-left:3px solid var(--accent); padding-left:13px; }
+    .result-label { font-size:11px; color:var(--accent); font-weight:700; margin-bottom:5px; }
+    .result p { font-size:13px; overflow-wrap:anywhere; }
+    .task-controls { border-top:1px solid var(--border); margin-top:16px; padding-top:14px; }
+    .connector-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+    .connector-card { padding:18px; border:1px solid var(--border); border-radius:11px; background:var(--bg); min-width:0; }
+    .connector-card h3 { font-size:14px; margin-bottom:10px; }
+    .connector-card .badge { margin-bottom:12px; }
+    .connector-card p { font-size:12px; color:var(--muted); margin-top:8px; overflow-wrap:anywhere; }
+    .connector-card .connector-mode { color:var(--accent); font-weight:650; }
+    .lesson-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    .lesson { padding:22px; border:1px solid var(--border); border-radius:12px; background:var(--bg); min-width:0; }
+    .lesson h3 { font-size:16px; margin:13px 0 8px; }
+    .lesson p { font-size:13px; color:var(--muted); }
+    .lesson form { border-top:1px solid var(--border); padding-top:16px; margin-top:18px; }
+    .lesson .field { margin-top:12px; }
+    .lesson .completion { color:var(--ok); margin-top:14px; }
+    .lesson .prerequisites { font-size:12px; margin-top:12px; }
+    .public-section { border-top:1px solid var(--border); padding:42px 0; }
+    .public-section h2 { font-size:22px; margin-bottom:8px; }
+    .public-section .subtle { margin-bottom:22px; max-width:680px; }
+    .steps-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .step-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px; min-width:0; }
+    .step-num { width:28px; height:28px; display:flex; align-items:center; justify-content:center; border-radius:50%; color:var(--accent); background:var(--surf2); font-size:12px; margin-bottom:11px; }
+    .step-card h3 { font-size:13px; overflow-wrap:anywhere; }
+    .step-card p { font-size:12px; color:var(--muted); margin-top:9px; }
+    .health-panel { padding:23px; background:var(--surface); border:1px solid var(--border); border-radius:var(--r); }
+    .health-header { display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:20px; }
+    .health-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+    .health-item { padding:15px; display:flex; align-items:center; gap:12px; border-radius:9px; background:var(--surf2); min-width:0; }
+    .health-label { font-size:12px; font-weight:650; }
+    .health-status { font-size:11px; color:var(--muted); }
+    .dot { width:8px; height:8px; flex-shrink:0; border-radius:50%; }
+    .dot-green { background:var(--ok); } .dot-yellow { background:var(--warn); } .dot-grey { background:var(--muted); }
+    .spinner { width:17px; height:17px; display:inline-block; border:2px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin .7s linear infinite; vertical-align:middle; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .plans { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; padding:24px; background:var(--surface); border:1px solid var(--border); border-radius:12px; }
+    .plans h2 { font-size:17px; }
+    .plans p { font-size:13px; color:var(--muted); margin-top:6px; max-width:700px; }
+    footer { padding:26px 0; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+    .footer-inner { display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; }
+    .footer-links { display:flex; gap:16px; flex-wrap:wrap; }
+    .footer-links a { text-decoration:none; }
+    @media (max-width:980px) { .connector-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .lesson-grid { grid-template-columns:1fr; } .steps-grid,.health-grid { grid-template-columns:repeat(2,1fr); } .access { gap:24px; } }
+    @media (max-width:760px) { .nav-links { display:none; } .workspace-grid { grid-template-columns:1fr; } .task-layout { grid-template-columns:1fr; } .task-builder { padding-right:0; border-right:0; border-bottom:1px solid var(--border); padding-bottom:26px; } .access { grid-template-columns:1fr; } .workspace-heading { flex-direction:column; } .panel { padding:22px; } }
+    @media (max-width:480px) { .container,.top-nav { padding-left:18px; padding-right:18px; } .intro { padding-top:40px; } .access { padding:22px; } .access-inputs { flex-direction:column; align-items:stretch; } .two-fields { grid-template-columns:1fr; } .observation-fields { grid-template-columns:1fr 1fr; } .connector-grid,.steps-grid,.health-grid { grid-template-columns:1fr; } h1 { letter-spacing:-.9px; } .task-card { padding:17px; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .spinner { animation:none; } }
   </style>
 </head>
 <body>
-
-<!-- ══════════ HEADER ══════════ -->
+<a href="#main-content" class="skip-link">Skip to content</a>
 <header role="banner">
-  <nav aria-label="Main navigation">
-    <a href="/" class="logo" aria-label="WeCommerce — AI E-commerce Platform home">WeCommerce ✦ HMO</a>
-    <ul class="nav-links" role="list">
-      <li><a href="#how-it-works">How it works</a></li>
-      <li><a href="#niches">Niches</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#status">Status</a></li>
+  <nav class="top-nav" aria-label="Main navigation">
+    <a href="/" class="logo"><span class="logo-mark" aria-hidden="true">✦</span> WeCommerce</a>
+    <ul class="nav-links">
+      <li><a href="#founder-access">Workspace</a></li>
+      <li><a href="#onboarding">Launch checklist</a></li>
+      <li><a href="#pricing">Plans</a></li>
+      <li><a href="#status">Platform health</a></li>
     </ul>
-    <a href="#pricing" class="btn btn-primary nav-cta">Get started free</a>
+    <span class="pill">Founder preview</span>
   </nav>
 </header>
-
-<!-- ══════════ MAIN ══════════ -->
 <main id="main-content">
-
-  <!-- Hero -->
-  <section class="hero" aria-labelledby="hero-heading">
-    <div class="hero-badge" role="doc-subtitle">AI Mentor + Operator Platform</div>
-    <h1 id="hero-heading">
-      Build a thriving e-commerce business<br>
-      <span class="grad">while learning every step</span>
-    </h1>
-    <p>
-      WeCommerce is the only AI platform that <strong>runs your store autonomously</strong>
-      while an embedded mentor <strong>teaches you every decision</strong> — from niche
-      selection all the way to scaling campaigns.
-    </p>
-    <div class="hero-ctas">
-      <a href="#pricing" class="btn btn-primary">Start for free</a>
-      <a href="#how-it-works" class="btn btn-outline">See how it works</a>
-    </div>
-  </section>
-
-  <!-- How it works — Dual-loop architecture -->
-  <hr class="sep" />
-  <article class="section" id="how-it-works" aria-labelledby="loop-heading">
-    <p class="section-label">Dual-loop architecture</p>
-    <h2 id="loop-heading" class="section-title">One platform. Two engines working for you.</h2>
-    <p class="section-sub">
-      While the <strong>Operator Loop</strong> runs your business, the
-      <strong>Mentor Loop</strong> explains every action and builds your skills over time.
-    </p>
-    <div class="loop-grid">
-      <div class="loop-card">
-        <span class="loop-icon" role="img" aria-label="Gear icon representing automation">⚙️</span>
-        <h2>Operator Loop</h2>
-        <p>Autonomous execution — handles the daily operations of your store so you don't have to.</p>
-        <ul class="loop-items" aria-label="Operator loop capabilities">
-          <li class="loop-item">Store setup &amp; continuous optimisation</li>
-          <li class="loop-item">SKU imports &amp; product feed management</li>
-          <li class="loop-item">SEO meta, alt-text &amp; ad copy generation</li>
-          <li class="loop-item">Analytics monitoring &amp; conversion loops</li>
-        </ul>
-      </div>
-      <div class="loop-card">
-        <span class="loop-icon" role="img" aria-label="Graduation cap icon representing mentorship">🎓</span>
-        <h2>Mentor Loop</h2>
-        <p>Explains every action, shares rationale and tradeoffs, tracks your competency, and unlocks advanced controls as you grow.</p>
-        <ul class="loop-items" aria-label="Mentor loop capabilities">
-          <li class="loop-item">What I did &amp; why I did it</li>
-          <li class="loop-item">Expected impact &amp; risks</li>
-          <li class="loop-item">Founder approval gates</li>
-          <li class="loop-item">Competency progression unlocks</li>
-        </ul>
-      </div>
-    </div>
-  </article>
-
-  <!-- Onboarding steps -->
-  <hr class="sep" />
-  <section class="section" id="onboarding" aria-labelledby="onboarding-heading">
-    <p class="section-label">Onboarding</p>
-    <h2 id="onboarding-heading" class="section-title">Your guided journey to launch</h2>
-    <p class="section-sub">Four AI-guided steps from idea to a live, optimised store — with your mentor explaining every decision.</p>
-    <div id="onboarding-steps" aria-live="polite" aria-label="Onboarding steps">
-      <div style="display:flex;align-items:center;gap:12px;color:var(--muted);">
-        <div class="spinner" role="status" aria-label="Loading onboarding steps"></div>
-        Loading onboarding plan…
+  <section class="intro" id="workspace-intro" aria-labelledby="hero-heading">
+    <div class="container">
+      <p class="eyebrow">Your founder workspace</p>
+      <h1 id="hero-heading">Make the next decision.<br>Understand every action.</h1>
+      <p class="intro-copy">Start with your business plan and unit economics. Review each task, approve its exact inputs, and work through the exercises that explain the decisions.</p>
+      <div class="capability-strip" aria-label="Current workspace capabilities">
+        <span class="pill">Read-only provider connections</span><span class="pill">Local drafts &amp; supplier references</span><span class="pill">Explain → Approve → Execute</span>
       </div>
     </div>
   </section>
-
-  <!-- Niche selector -->
-  <hr class="sep" />
-  <section class="section" id="niches" aria-labelledby="niches-heading">
-    <p class="section-label">Niche selector</p>
-    <h2 id="niches-heading" class="section-title">Find your winning niche</h2>
-    <p class="section-sub">
-      Choose from 10 validated high-revenue niches. The AI validates live demand — trend data,
-      CPC, margin, and fulfilment reliability — before you commit.
-    </p>
-    <div class="niches-grid" id="niches-grid" role="list" aria-label="Available e-commerce niches"></div>
-  </section>
-
-  <!-- Pricing -->
-  <hr class="sep" />
-  <section class="section" id="pricing" aria-labelledby="pricing-heading">
-    <p class="section-label">Pricing</p>
-    <h2 id="pricing-heading" class="section-title">Plans for every stage</h2>
-    <p class="section-sub">Start free and scale as your business grows. All plans include Stripe checkout integration — your keys, your money.</p>
-
-    <div class="pricing-grid">
-      <!-- Free -->
-      <article class="tier" aria-labelledby="tier-free">
-        <p class="tier-name" id="tier-free">Free</p>
-        <div class="tier-price" aria-label="Free — $0 per month"><sup>$</sup>0 <span>/ mo</span></div>
-        <p class="tier-desc">Get started with a single-niche starter store and guided setup. No credit card required.</p>
-        <ul class="tier-features" aria-label="Free plan included features">
-          <li>Starter storefront generation</li>
-          <li>Basic landing page templates</li>
-          <li>Manual product imports</li>
-          <li>Basic SEO field suggestions</li>
-          <li>Stripe checkout (your keys)</li>
-        </ul>
-        <a href="#" class="btn btn-outline btn-full" aria-label="Start WeCommerce for free — no credit card required">Start free</a>
-      </article>
-
-      <!-- Premium -->
-      <article class="tier featured" aria-labelledby="tier-premium">
-        <div class="featured-pill" aria-label="Most popular plan">Most popular</div>
-        <p class="tier-name" id="tier-premium">Premium</p>
-        <div class="tier-price" aria-label="Premium — $299 per month"><sup>$</sup>299 <span>/ mo</span></div>
-        <p class="tier-desc">AI mentor plus autonomous operations for serious founders running up to 3 stores.</p>
-        <ul class="tier-features" aria-label="Premium plan included features">
-          <li>AI mentor explanations on every action</li>
-          <li>Autonomous store optimisation</li>
-          <li>Supplier import automation</li>
-          <li>SEO &amp; alt-text generation</li>
-          <li>Ad copy &amp; creative brief generation</li>
-          <li>Conversion roadmap &amp; founder coaching</li>
-        </ul>
-        <a href="#" class="btn btn-primary btn-full" aria-label="Get WeCommerce Premium for $299 per month">Get Premium</a>
-      </article>
-
-      <!-- Ultra -->
-      <article class="tier" aria-labelledby="tier-ultra">
-        <p class="tier-name" id="tier-ultra">Ultra</p>
-        <div class="tier-price" aria-label="Ultra — $999 per month"><sup>$</sup>999 <span>/ mo</span></div>
-        <p class="tier-desc">Multi-niche operations with advanced growth intelligence for up to 10 stores across 5 niches.</p>
-        <ul class="tier-features" aria-label="Ultra plan included features">
-          <li>Multi-niche store operations (5 niches)</li>
-          <li>Advanced experimentation engine</li>
-          <li>Multi-channel campaign orchestration</li>
-          <li>High-volume catalogue automation</li>
-          <li>Custom AI agent workflows</li>
-          <li>Executive growth intelligence dashboards</li>
-        </ul>
-        <a href="#" class="btn btn-outline btn-full" aria-label="Go Ultra for $999 per month">Go Ultra</a>
-      </article>
-    </div>
-  </section>
-
-  <!-- System status -->
-  <hr class="sep" />
-  <section class="section" id="status" aria-labelledby="status-heading">
-    <p class="section-label">System status</p>
-    <h2 id="status-heading" class="section-title">Platform health</h2>
-    <p class="section-sub">API availability and integration configuration. Credentials alone do not verify a live connection.</p>
-    <div class="health-panel">
-      <div class="health-header">
-        <div>
-          <p style="font-weight:600;margin-bottom:4px;">All systems</p>
-          <p id="overall-status" style="font-size:14px;color:var(--muted);" aria-live="polite">Checking…</p>
+  <div class="container">
+    <section class="access" id="founder-access" aria-labelledby="access-heading">
+      <div>
+        <h2 id="access-heading">Open your workspace</h2>
+        <p class="subtle">Enter the founder access token configured by your workspace administrator. Provider credentials are managed on the server.</p>
+        <p class="help">The token stays in this tab’s memory. Reloading or locking the workspace clears access.</p>
+      </div>
+      <form id="access-form" autocomplete="off">
+        <div class="access-inputs">
+          <div class="field"><label for="access-token">Founder access token</label><input id="access-token" name="founderToken" type="password" required maxlength="512" autocomplete="off" spellcheck="false" autocapitalize="none" aria-describedby="access-feedback" /></div>
+          <button class="btn btn-primary" id="open-workspace" type="submit">Open workspace</button>
         </div>
-        <button onclick="checkHealth()" class="btn btn-outline" style="font-size:13px;" aria-label="Refresh platform health status">
-          Refresh
-        </button>
+        <p id="access-feedback" class="feedback" role="status" aria-live="polite">Your workspace is private. The launch checklist and platform health below are public.</p>
+      </form>
+    </section>
+    <section class="workspace" id="workspace" aria-labelledby="workspace-heading" hidden>
+      <div class="workspace-heading">
+        <div><p class="eyebrow">Founder dashboard</p><h2 id="workspace-heading" tabindex="-1">Your workspace</h2><p id="storage-status" class="subtle"></p></div>
+        <div class="button-row"><button type="button" class="btn btn-outline" id="refresh-workspace">Refresh workspace</button><button type="button" class="btn btn-outline" id="lock-workspace">Lock workspace</button></div>
       </div>
-      <div class="health-grid" id="health-grid" aria-live="polite" aria-label="Service health indicators">
-        <div class="health-item">
-          <div class="spinner" role="status" aria-label="Checking service health"></div>
-          <div><p class="health-label">Checking…</p></div>
-        </div>
+      <nav class="workspace-menu" aria-label="Workspace sections"><a href="#founder-profile">Onboarding</a><a href="#niches">Niche margins</a><a href="#tasks">Tasks</a><a href="#connectors">Connections</a><a href="#curriculum">Learn</a></nav>
+      <p id="workspace-status" class="workspace-status" role="status" aria-live="polite"></p>
+      <div id="workspace-error" class="notice error" role="alert" hidden><p id="workspace-error-message"></p><p class="help">Refresh to check the saved state before repeating an action.</p><button type="button" class="btn btn-outline" id="retry-workspace">Retry workspace refresh</button></div>
+      <div class="workspace-grid">
+        <section class="panel" id="founder-profile" aria-labelledby="profile-heading">
+          <div class="panel-header"><div><p class="eyebrow">01 / Onboarding</p><h2 id="profile-heading">Set your direction</h2><p class="panel-intro">Save a business brief. Your plan and lesson progression use this profile.</p></div><span id="profile-state" class="badge">Not started</span></div>
+          <form id="profile-form">
+            <fieldset class="workspace-controls">
+              <div class="field"><label for="brand-name">Brand name</label><input id="brand-name" name="brandName" required maxlength="80" placeholder="Your brand" /></div>
+              <div class="field"><label for="profile-niche">Niche</label><input id="profile-niche" name="niche" required maxlength="100" list="niche-options" placeholder="Choose a direction or enter your own" /></div>
+              <div class="two-fields"><div class="field"><label for="target-country">Target country</label><input id="target-country" name="targetCountry" required maxlength="80" placeholder="Country or country code" /></div><div class="field"><label for="profile-currency">Currency</label><input id="profile-currency" name="currency" value="USD" minlength="3" maxlength="3" pattern="[A-Za-z]{3}" required aria-label="Currency, three-letter code" /></div></div>
+              <div class="field"><label for="profile-goal">Business goal</label><textarea id="profile-goal" name="goal" required maxlength="500" placeholder="Describe the next business milestone. Keep personal and contact details out of the brief."></textarea></div>
+              <button type="submit" class="btn btn-primary">Save founder profile</button>
+            </fieldset>
+          </form>
+        </section>
+        <section class="panel" id="niches" aria-labelledby="niches-heading">
+          <div class="panel-header"><div><p class="eyebrow">02 / Unit economics</p><h2 id="niches-heading">Compare niche margins</h2><p class="panel-intro">Use your own price and cost observations. A margin estimate does not establish demand or supplier reliability.</p></div></div>
+          <form id="niche-form"><fieldset class="workspace-controls"><div id="observations"></div><div class="button-row"><button type="button" class="btn btn-outline" id="add-observation">Add observation</button><button type="submit" class="btn btn-primary">Calculate margins</button></div><p class="help">Use one currency for all amounts. Leave unknown amounts blank; incomplete observations receive no margin or rank.</p></fieldset></form>
+          <div id="niche-scores" class="score-list" aria-label="Saved margin estimates"></div>
+        </section>
+        <section class="panel panel-wide" id="tasks" aria-labelledby="tasks-heading">
+          <div class="panel-header"><div><p class="eyebrow">03 / Operator tasks</p><h2 id="tasks-heading">Explain. Approve. Execute.</h2><p class="panel-intro">The saved inputs are fixed at proposal time. Execution starts only after your approval. This version reads provider data and prepares local drafts or references.</p></div><span id="task-count" class="badge">0 tasks</span></div>
+          <div class="task-layout">
+            <form id="task-form" class="task-builder">
+              <fieldset class="workspace-controls">
+                <div class="field"><label for="task-kind">What would you like to prepare?</label><select id="task-kind"><option value="onboarding_plan">Guided onboarding plan</option><option value="connector_sync">Read provider data</option><option value="supplier_reference">Supplier reference</option><option value="ad_draft">Advertising draft</option></select></div>
+                <div class="field" id="provider-field" hidden><label for="task-provider">Provider</label><select id="task-provider"></select></div>
+                <p class="help" id="task-capability-note"></p>
+                <fieldset id="read-params" hidden><legend>Read scope</legend><div class="two-fields"><div class="field"><label for="read-limit">Maximum records</label><input id="read-limit" type="number" min="1" max="50" step="1" value="10" /></div><div class="field"><label for="read-page">Page</label><input id="read-page" type="number" min="1" max="20" step="1" value="1" /></div></div><div id="cj-params" hidden><div class="field"><label for="supplier-query">Product search (optional)</label><input id="supplier-query" maxlength="100" /></div><div class="field"><label for="supplier-product-id">CJ product ID (optional)</label><input id="supplier-product-id" maxlength="100" /></div></div></fieldset>
+                <fieldset id="reference-params" hidden><legend>Listing to review</legend><div class="field"><label for="reference-url">HTTPS listing URL</label><input id="reference-url" type="url" maxlength="2048" placeholder="https://…" /></div><div class="field"><label for="reference-title">Reference title (optional)</label><input id="reference-title" maxlength="160" /></div><div class="field"><label for="reference-notes">Verification notes (optional)</label><textarea id="reference-notes" maxlength="1000" placeholder="Questions to check before choosing a supplier"></textarea></div></fieldset>
+                <fieldset id="ad-params" hidden><legend>Your campaign draft</legend><div class="field"><label for="ad-headline">Headline</label><input id="ad-headline" maxlength="80" /></div><div class="field"><label for="ad-description">Description</label><textarea id="ad-description" maxlength="500"></textarea></div><div class="field"><label for="ad-destination">HTTPS destination URL</label><input id="ad-destination" type="url" maxlength="2048" placeholder="https://…" /></div><div class="two-fields"><div class="field"><label for="ad-budget">Proposed daily budget</label><input id="ad-budget" type="number" min="0.01" max="1000000" step="0.01" /></div><div class="field"><label for="ad-currency">Currency</label><input id="ad-currency" value="USD" minlength="3" maxlength="3" pattern="[A-Za-z]{3}" /></div></div><p class="help">Uses the copy and budget you enter. Creating this local draft does not publish an ad or charge the proposed budget.</p></fieldset>
+                <button type="submit" class="btn btn-primary" id="explain-task">Explain this task</button>
+              </fieldset>
+            </form>
+            <div id="task-list" class="task-list" aria-label="Saved tasks"></div>
+          </div>
+        </section>
+        <section class="panel panel-wide" id="connectors" aria-labelledby="connectors-heading">
+          <div class="panel-header"><div><p class="eyebrow">04 / Connections</p><h2 id="connectors-heading">Capabilities &amp; configuration</h2><p class="panel-intro">These statuses come from the server. Configured credentials are verified only when a read completes. Supplier references remain unverified.</p></div></div>
+          <div id="connector-grid" class="connector-grid"></div>
+        </section>
+        <section class="panel panel-wide" id="curriculum" aria-labelledby="curriculum-heading">
+          <div class="panel-header"><div><p class="eyebrow">05 / Founder learning</p><h2 id="curriculum-heading">Practice the decisions</h2><p class="panel-intro">Complete the exercises in sequence. Progress records exercise completion; it does not certify professional proficiency or validate your business.</p></div><span id="lesson-progress" class="badge">Not started</span></div>
+          <div id="lesson-grid" class="lesson-grid"></div>
+        </section>
       </div>
-    </div>
-  </section>
-
+    </section>
+    <section class="public-section" id="onboarding" aria-labelledby="onboarding-heading">
+      <p class="eyebrow">Public launch checklist</p><h2 id="onboarding-heading">A starting point for your plan</h2><p class="subtle">This public checklist is guidance. Your saved profile, tasks, and exercise progress appear in the private workspace above.</p>
+      <div id="onboarding-steps" aria-live="polite" aria-label="Onboarding steps"><span class="spinner" aria-hidden="true"></span> Loading checklist…</div>
+      <p id="plan-feedback" class="feedback error" role="status" hidden></p><button type="button" class="btn btn-outline" id="retry-plan" hidden>Retry checklist</button>
+    </section>
+    <section class="public-section" id="pricing" aria-labelledby="pricing-heading"><div class="plans"><div><p class="eyebrow">Plans</p><h2 id="pricing-heading">Explore the founder preview</h2><p>Use the workspace when your administrator has configured access. Paid plans and purchases are not available in this preview.</p></div><a href="#founder-access" class="btn btn-outline">Open workspace</a></div></section>
+    <section class="public-section" id="status" aria-labelledby="status-heading">
+      <p class="eyebrow">Public system status</p><h2 id="status-heading">Platform health</h2><p class="subtle">API availability and integration configuration. Credentials alone do not verify a live connection.</p>
+      <div class="health-panel"><div class="health-header"><div><p style="font-weight:650;font-size:14px;">Service availability</p><p id="overall-status" class="subtle" style="margin-bottom:0;" aria-live="polite">Checking…</p></div><button type="button" onclick="checkHealth()" class="btn btn-outline" aria-label="Refresh platform health status">Refresh health</button></div><div class="health-grid" id="health-grid" aria-live="polite" aria-label="Service health indicators"><div class="health-item"><div class="spinner" role="status" aria-label="Checking service health"></div><p class="health-label">Checking…</p></div></div></div>
+    </section>
+  </div>
 </main>
-
-<!-- ══════════ FOOTER ══════════ -->
-<footer role="contentinfo">
-  <p>
-    <strong>WeCommerce</strong> · HybridMentorOps AI Platform ·
-    Build your e-commerce business with an AI mentor &amp; operator.
-  </p>
-  <nav aria-label="Footer links">
-    <ul class="footer-nav">
-      <li><a href="/api/health">API Health</a></li>
-      <li><a href="/api/onboarding/plan">Onboarding Plan</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#niches">Niches</a></li>
-      <li><a href="#status">Status</a></li>
-    </ul>
-  </nav>
-</footer>
-
+<footer role="contentinfo"><div class="container footer-inner"><p><strong>WeCommerce</strong> · HybridMentorOps · Founder workspace preview</p><nav class="footer-links" aria-label="Footer links"><a href="/api/health">API health</a><a href="/api/onboarding/plan">Public checklist</a><a href="#founder-access">Workspace access</a></nav></div></footer>
+<datalist id="niche-options"><option value="Health &amp; Wellness"></option><option value="Beauty &amp; Skincare"></option><option value="Home &amp; Kitchen"></option><option value="Pet Products"></option><option value="Baby &amp; Parenting"></option><option value="Fitness &amp; Recovery"></option><option value="Tech Accessories"></option><option value="Outdoor &amp; Travel"></option><option value="Fashion Accessories"></option><option value="Eco-friendly Living"></option></datalist>
 <script>
-  /* ── Niche data (mirrors config/niches.json) ── */
-  var NICHES = [
-    { name: "Health &amp; Wellness",   archetype: "Posture corrector / wellness wearable",   icon: "💪", iconLabel: "Flexed bicep — Health and Wellness niche" },
-    { name: "Beauty &amp; Skincare",   archetype: "LED skincare tool",                        icon: "✨", iconLabel: "Sparkles — Beauty and Skincare niche" },
-    { name: "Home &amp; Kitchen",      archetype: "Space-saving kitchen organiser",           icon: "🏠", iconLabel: "House — Home and Kitchen niche" },
-    { name: "Pet Products",            archetype: "Interactive pet feeder / toy",             icon: "🐾", iconLabel: "Paw prints — Pet Products niche" },
-    { name: "Baby &amp; Parenting",    archetype: "Portable baby soothing device",            icon: "👶", iconLabel: "Baby — Baby and Parenting niche" },
-    { name: "Fitness &amp; Recovery",  archetype: "Smart resistance training kit",            icon: "🏋️", iconLabel: "Weight lifter — Fitness and Recovery niche" },
-    { name: "Tech Accessories",        archetype: "Magnetic charging ecosystem",             icon: "🔌", iconLabel: "Electric plug — Tech Accessories niche" },
-    { name: "Outdoor &amp; Travel",    archetype: "Compact travel utility gear",             icon: "🌄", iconLabel: "Sunrise over mountains — Outdoor and Travel niche" },
-    { name: "Fashion Accessories",     archetype: "Personalised jewellery / accessory set",  icon: "💎", iconLabel: "Gem — Fashion Accessories niche" },
-    { name: "Eco-friendly Living",     archetype: "Reusable home essentials bundle",         icon: "🌱", iconLabel: "Seedling — Eco-friendly Living niche" }
-  ];
-
-  /* ── Render niches ── */
+  // Private workspace access is held in this closure only; it is never persisted.
   (function () {
-    var grid = document.getElementById('niches-grid');
-    NICHES.forEach(function (n) {
-      var card = document.createElement('div');
-      card.className = 'niche-card';
-      card.setAttribute('role', 'listitem');
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('aria-label', n.name.replace(/&amp;/g, '&') + ' — ' + n.archetype);
-      card.innerHTML =
-        '<span class="niche-icon" role="img" aria-label="' + n.iconLabel + '">' + n.icon + '</span>' +
-        '<h3>' + n.name + '</h3>' +
-        '<p>' + n.archetype + '</p>';
-      card.addEventListener('click', function () {
-        document.querySelectorAll('.niche-card').forEach(function (c) {
-          c.classList.remove('selected');
-          c.setAttribute('aria-pressed', 'false');
-        });
-        card.classList.add('selected');
-        card.setAttribute('aria-pressed', 'true');
-      });
-      card.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
-      });
-      grid.appendChild(card);
+    'use strict';
+    var accessToken = '';
+    var workspace = null;
+    var busy = false;
+    var accessBusy = false;
+    var observationNumber = 0;
+    var sessionVersion = 0;
+    var amounts = ['retailPrice', 'productCost', 'shippingCost', 'fees', 'acquisitionCost'];
+    var amountLabels = {retailPrice:'Retail price',productCost:'Product cost',shippingCost:'Shipping cost',fees:'Fees',acquisitionCost:'Acquisition cost'};
+    var kindLabels = {onboarding_plan:'Guided onboarding plan',connector_sync:'Provider data read',supplier_reference:'Supplier reference',ad_draft:'Advertising draft'};
+    var modeLabels = {provider_read:'Verified provider read',local_draft:'Local draft prepared',reference_preparation:'Unverified reference prepared',local_guidance:'Local guidance prepared',blocked:'Blocked',uncertain:'Reconciliation required'};
+    var evidenceLabels = {demand:'Demand evidence',supplier_reliability:'Supplier reliability evidence'};
+    var byId = function (id) { return document.getElementById(id); };
+    function node(tag, className, text) { var el = document.createElement(tag); if (className) el.className = className; if (text !== undefined && text !== null) el.textContent = String(text); return el; }
+    function clear(el) { el.replaceChildren(); }
+    function textValue(value) { if (typeof value === 'string') return value; if (Array.isArray(value)) return value.join('; '); if (value === undefined || value === null) return ''; return JSON.stringify(value); }
+    function lockControl(control, locked) { control.disabled = busy || locked; control.dataset.locked = String(!!locked); }
+    function setBusy(value, message) {
+      busy = value;
+      byId('workspace').setAttribute('aria-busy', String(value));
+      byId('workspace').querySelectorAll('button,input,select,textarea').forEach(function (control) { control.disabled = value || control.dataset.locked === 'true'; });
+      // Locking remains available even when a request is in flight.
+      byId('lock-workspace').disabled = false;
+      byId('workspace-status').textContent = message || '';
+    }
+    function showError(message) { byId('workspace-error-message').textContent = message; byId('workspace-error').hidden = false; }
+    function resetError() { byId('workspace-error').hidden = true; byId('workspace-error-message').textContent = ''; }
+    function closeWorkspace(message) {
+      accessToken = '';
+      workspace = null;
+      sessionVersion += 1;
+      busy = false;
+      byId('workspace').hidden = true;
+      byId('workspace-intro').hidden = false;
+      byId('founder-access').hidden = false;
+      byId('access-form').reset();
+      byId('profile-form').reset();
+      byId('task-form').reset();
+      ['niche-scores','task-list','connector-grid','lesson-grid','observations'].forEach(function (id) { clear(byId(id)); });
+      addObservation();
+      byId('workspace-heading').textContent = 'Your workspace';
+      byId('storage-status').textContent = '';
+      byId('workspace-status').textContent = '';
+      resetError();
+      byId('access-feedback').textContent = message || 'Workspace locked. Enter your access token to reopen it.';
+      byId('access-feedback').className = 'feedback';
+      byId('access-token').focus();
+    }
+    async function requestWorkspace(payload) {
+      var controller = new AbortController();
+      var timer = setTimeout(function () { controller.abort(); }, 20000);
+      try {
+        var response = await fetch('/api/workspace', {method:payload ? 'POST' : 'GET',headers:payload ? {'Authorization':'Bearer ' + accessToken,'Accept':'application/json','Content-Type':'application/json'} : {'Authorization':'Bearer ' + accessToken,'Accept':'application/json'},body:payload ? JSON.stringify(payload) : undefined,cache:'no-store',credentials:'omit',signal:controller.signal});
+        var data;
+        try { data = await response.json(); } catch (_) { throw new Error('The workspace returned an unreadable response. Retry the refresh.'); }
+        if (!response.ok) { var error = new Error(typeof data.error === 'string' ? data.error : 'The workspace request could not be completed.'); error.status = response.status; error.code = data.code; throw error; }
+        if (!data || !Array.isArray(data.tasks) || !Array.isArray(data.niches) || !data.curriculum || !data.connectors || !Object.prototype.hasOwnProperty.call(data,'profile')) throw new Error('The workspace response is incomplete. Retry the refresh.');
+        return data;
+      } catch (error) {
+        if (error.name === 'AbortError') throw new Error('The workspace request timed out. Refresh to check whether the action was saved.');
+        if (error instanceof TypeError) throw new Error('The workspace could not be reached. Check your connection and retry the refresh.');
+        throw error;
+      } finally { clearTimeout(timer); }
+    }
+    async function perform(payload, message, onSaved) {
+      if (busy || !accessToken) return;
+      var version = sessionVersion;
+      resetError();
+      setBusy(true, payload ? 'Saving your action…' : 'Refreshing workspace…');
+      try {
+        var data = await requestWorkspace(payload);
+        if (version !== sessionVersion) return;
+        workspace = data;
+        renderWorkspace(false);
+        setBusy(false, message || 'Workspace refreshed from the server.');
+        if (onSaved) onSaved(data);
+      } catch (error) {
+        if (version !== sessionVersion) return;
+        setBusy(false, '');
+        if (error.status === 401) { closeWorkspace('Access was rejected or expired. Enter a valid founder access token.'); return; }
+        showError(error.message);
+      }
+    }
+    byId('access-form').addEventListener('submit', async function (event) {
+      event.preventDefault();
+      if (accessBusy) return;
+      accessToken = byId('access-token').value.trim();
+      if (!accessToken) return;
+      var version = ++sessionVersion;
+      accessBusy = true;
+      byId('open-workspace').disabled = true;
+      byId('access-token').disabled = true;
+      byId('access-feedback').className = 'feedback';
+      byId('access-feedback').textContent = 'Opening your private workspace…';
+      // Clear the input immediately; the request uses the in-memory token.
+      byId('access-token').value = '';
+      try {
+        var data = await requestWorkspace();
+        if (version !== sessionVersion) return;
+        workspace = data;
+        byId('founder-access').hidden = true;
+        byId('workspace-intro').hidden = true;
+        byId('workspace').hidden = false;
+        renderWorkspace(true);
+        setBusy(false, 'Workspace loaded from the server.');
+        byId('workspace-heading').focus();
+      } catch (error) {
+        if (version !== sessionVersion) return;
+        accessToken = '';
+        byId('access-feedback').className = 'feedback error';
+        byId('access-feedback').textContent = error.status === 401 ? 'Access rejected. Enter a valid founder access token and try again.' : error.message;
+      } finally {
+        accessBusy = false;
+        byId('open-workspace').disabled = false;
+        byId('access-token').disabled = false;
+      }
     });
+    byId('lock-workspace').addEventListener('click', function () { closeWorkspace(); });
+    byId('refresh-workspace').addEventListener('click', function () { perform(); });
+    byId('retry-workspace').addEventListener('click', function () { perform(); });
+    function renderWorkspace(fillProfile) {
+      byId('workspace-heading').textContent = workspace.profile ? workspace.profile.brandName + ' workspace' : 'Your workspace';
+      var storage = workspace.storage || {};
+      byId('storage-status').textContent = storage.productionReady === false ? 'Saved locally for development. Hosted workspaces need durable storage configured.' : storage.durable === true ? 'Saved to durable workspace storage.' : 'Saved state provided by the server.';
+      if (fillProfile && workspace.profile) {
+        Object.keys(workspace.profile).forEach(function (key) { var field = byId('profile-form').elements.namedItem(key); if (field) field.value = workspace.profile[key]; });
+        byId('ad-currency').value = workspace.profile.currency;
+      }
+      updateProfileBadge();
+      if (fillProfile && workspace.niches.length) {
+        clear(byId('observations'));
+        workspace.niches.forEach(addObservation);
+      }
+      renderScores();
+      renderConnectors();
+      renderTasks();
+      renderLessons();
+      configureTaskForm();
+    }
+    function profileMatchesSaved() {
+      return !!(workspace && workspace.profile) && ['brandName','niche','targetCountry','currency','goal'].every(function (key) {
+        var value = byId('profile-form').elements.namedItem(key).value.trim();
+        return (key === 'currency' ? value.toUpperCase() : value) === workspace.profile[key];
+      });
+    }
+    function updateProfileBadge() {
+      var saved = profileMatchesSaved();
+      byId('profile-state').textContent = !workspace || !workspace.profile ? 'Not started' : saved ? 'Profile saved' : 'Unsaved changes';
+      byId('profile-state').className = 'badge ' + (saved ? 'completed' : 'proposed');
+    }
+    byId('profile-form').addEventListener('input',function () { updateProfileBadge(); updateProviderNote(); });
+    byId('profile-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      var form = event.currentTarget;
+      var profile = {};
+      ['brandName','niche','targetCountry','currency','goal'].forEach(function (key) { profile[key] = form.elements.namedItem(key).value.trim(); });
+      perform({action:'save_profile',profile:profile}, 'Founder profile saved. Your plan and exercises can use this brief.', function () { byId('ad-currency').value = profile.currency; });
+    });
+    function addObservation(values) {
+      var list = byId('observations');
+      if (list.children.length >= 10) return;
+      observationNumber += 1;
+      var id = observationNumber;
+      var row = node('div','observation');
+      var title = node('div','observation-title');
+      title.appendChild(node('h3','', 'Observation ' + (list.children.length + 1)));
+      var remove = node('button','btn btn-outline remove-observation','Remove');
+      remove.type = 'button';
+      remove.setAttribute('aria-label','Remove observation ' + (list.children.length + 1));
+      remove.addEventListener('click', function () { row.remove(); updateObservationControls(); });
+      title.appendChild(remove);
+      row.appendChild(title);
+      var fields = node('div','observation-fields');
+      ['niche'].concat(amounts).forEach(function (key) {
+        var field = node('div','field' + (key === 'niche' ? ' niche-name' : ''));
+        var label = node('label','', key === 'niche' ? 'Niche label' : amountLabels[key]);
+        label.htmlFor = 'observation-' + id + '-' + key;
+        var input = node('input');
+        input.id = label.htmlFor;
+        input.name = key;
+        input.type = key === 'niche' ? 'text' : 'number';
+        input.required = key === 'niche';
+        if (key === 'niche') { input.maxLength = 100; input.setAttribute('list','niche-options'); input.placeholder = 'Your niche or product category'; }
+        else { input.min = key === 'retailPrice' ? '0.01' : '0'; input.max = '1000000'; input.step = '0.01'; input.placeholder = 'Unknown'; }
+        if (values && typeof values.niche === 'string' && values[key] !== undefined && values[key] !== null) input.value = String(values[key]);
+        field.append(label,input);
+        fields.appendChild(field);
+      });
+      row.appendChild(fields);
+      list.appendChild(row);
+      updateObservationControls();
+    }
+    function updateObservationControls() {
+      var rows = byId('observations').children;
+      Array.from(rows).forEach(function (row,index) { row.querySelector('h3').textContent = 'Observation ' + (index + 1); var remove = row.querySelector('button'); remove.setAttribute('aria-label','Remove observation ' + (index + 1)); lockControl(remove,rows.length === 1); });
+      lockControl(byId('add-observation'),rows.length >= 10);
+    }
+    byId('add-observation').addEventListener('click', addObservation);
+    byId('niche-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      var observations = Array.from(byId('observations').children).map(function (row) { var item = {niche:row.querySelector('[name="niche"]').value.trim()}; amounts.forEach(function (key) { var input = row.querySelector('[name="' + key + '"]'); if (input.value !== '') item[key] = Number(input.value); }); return item; });
+      perform({action:'score_niches',observations:observations}, 'Margin estimates saved from your supplied observations. Demand and supplier reliability still need evidence.');
+    });
+    function money(value) { if (typeof value !== 'number' || !Number.isFinite(value)) return 'Unknown'; var currency = workspace.profile && workspace.profile.currency; return value.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}) + (currency ? ' ' + currency : ''); }
+    function renderScores() {
+      var list = byId('niche-scores');
+      clear(list);
+      if (!workspace.niches.length) { list.appendChild(node('p','subtle','No margin observations saved yet.')); return; }
+      workspace.niches.forEach(function (score) {
+        var card = node('article','score-card');
+        card.appendChild(node('h3','',score.niche));
+        var metrics = node('div','score-metrics');
+        var margin = node('div','score-metric'); margin.append(node('span','','Contribution per unit'),node('strong','',money(score.contributionMargin)));
+        var percent = node('div','score-metric'); percent.append(node('span','','Contribution margin'),node('strong','',typeof score.marginPercent === 'number' ? score.marginPercent.toFixed(2) + '%' : 'Unknown'));
+        metrics.append(margin,percent); card.appendChild(metrics);
+        card.appendChild(node('p','','Total supplied costs: ' + money(score.totalCosts)));
+        if (Array.isArray(score.missingInputs) && score.missingInputs.length) card.appendChild(node('p','','Missing amounts: ' + score.missingInputs.map(function (key) { return amountLabels[key] || key; }).join(', ') + '. No rank assigned.'));
+        else if (typeof score.rank === 'number') card.appendChild(node('p','','Margin rank among complete supplied observations: ' + score.rank));
+        var missing = Array.isArray(score.missingEvidence) ? score.missingEvidence : [];
+        if (missing.length) card.appendChild(node('p','','Evidence still needed: ' + missing.map(function (key) { return evidenceLabels[key] || key; }).join(', ') + '.'));
+        list.appendChild(card);
+      });
+    }
+    function connectorEntries() { return Object.entries(workspace.connectors || {}).filter(function (entry) { return entry[1] && typeof entry[1] === 'object'; }); }
+    function renderConnectors() {
+      var grid = byId('connector-grid'); clear(grid);
+      connectorEntries().forEach(function (entry) {
+        var provider = entry[0]; var status = entry[1];
+        var card = node('article','connector-card'); card.dataset.provider = provider;
+        card.appendChild(node('h3','',status.label || provider));
+        var reference = status.mode === 'reference_preparation';
+        card.appendChild(node('span','badge',reference ? 'Reference only · unverified' : status.configured === true ? 'Credentials configured' : 'Credentials missing'));
+        card.appendChild(node('p','connector-mode',reference ? 'Local reference preparation' : 'Read-only provider access'));
+        var capabilities = Array.isArray(status.capabilities) ? status.capabilities : [];
+        card.appendChild(node('p','','Capabilities: ' + (capabilities.map(function (kind) { return kindLabels[kind] || kind; }).join(', ') || 'No operations reported')));
+        if (status.limitation) card.appendChild(node('p','',textValue(status.limitation)));
+        if (!reference && status.configured === true) card.appendChild(node('p','','Configuration alone does not verify a connection. Review completed read results.'));
+        if (capabilities.includes('ad_draft')) card.appendChild(node('p','','Advertising drafts are local and can be prepared without provider credentials.'));
+        grid.appendChild(card);
+      });
+      if (!grid.children.length) grid.appendChild(node('p','subtle','The server reported no connector capabilities.'));
+    }
+    function configureTaskForm() {
+      if (!workspace) return;
+      var kind = byId('task-kind').value;
+      var unlocked = Array.isArray(workspace.curriculum.unlockedControls) ? workspace.curriculum.unlockedControls : [];
+      Array.from(byId('task-kind').options).forEach(function (option) { option.textContent = ({onboarding_plan:'Guided onboarding plan',connector_sync:'Read provider data',supplier_reference:'Supplier reference',ad_draft:'Advertising draft'})[option.value] + (unlocked.includes(option.value) ? '' : ' · locked'); });
+      var providerSelect = byId('task-provider');
+      var previous = providerSelect.value;
+      clear(providerSelect);
+      connectorEntries().filter(function (entry) { return Array.isArray(entry[1].capabilities) && entry[1].capabilities.includes(kind); }).forEach(function (entry) { var option = node('option','',entry[1].label || entry[0]); option.value = entry[0]; providerSelect.appendChild(option); });
+      if (Array.from(providerSelect.options).some(function (option) { return option.value === previous; })) providerSelect.value = previous;
+      byId('provider-field').hidden = kind === 'onboarding_plan';
+      ['read','reference','ad'].forEach(function (prefix) { var group = byId(prefix + '-params'); var shown = kind === ({read:'connector_sync',reference:'supplier_reference',ad:'ad_draft'})[prefix]; group.hidden = !shown; group.querySelectorAll('input,textarea').forEach(function (input) { lockControl(input,!shown); }); });
+      byId('read-limit').required = kind === 'connector_sync';
+      byId('read-page').required = kind === 'connector_sync';
+      byId('reference-url').required = kind === 'supplier_reference';
+      ['ad-headline','ad-description','ad-destination','ad-budget','ad-currency'].forEach(function (id) { byId(id).required = kind === 'ad_draft'; });
+      var unavailable = kind !== 'onboarding_plan' && !providerSelect.options.length;
+      lockControl(providerSelect,kind === 'onboarding_plan' || unavailable);
+      lockControl(byId('explain-task'),unavailable || !unlocked.includes(kind));
+      updateProviderNote();
+    }
+    function updateProviderNote() {
+      if (!workspace) return;
+      var kind = byId('task-kind').value;
+      var provider = byId('task-provider').value;
+      var status = workspace.connectors[provider];
+      byId('cj-params').hidden = kind !== 'connector_sync' || provider !== 'cj';
+      byId('cj-params').querySelectorAll('input').forEach(function (input) { lockControl(input,kind !== 'connector_sync' || provider !== 'cj'); });
+      var note;
+      var unlocked = Array.isArray(workspace.curriculum.unlockedControls) ? workspace.curriculum.unlockedControls : [];
+      if (!workspace.profile) note = 'Save your founder profile to unlock task proposals.';
+      else if (!unlocked.includes(kind)) note = kind === 'ad_draft' ? 'Complete the founder exercises through approval safety to unlock advertising drafts.' : 'This task is locked by the server’s current curriculum state.';
+      else if (kind === 'onboarding_plan') note = (profileMatchesSaved() ? '' : 'Your profile form has unsaved changes. The proposal uses the last saved profile. ') + 'Prepares local guidance from your saved profile. It does not create a store or connect accounts.';
+      else if (!status) note = 'No provider capability for this task was reported by the server.';
+      else if (kind === 'supplier_reference') note = 'Prepares an unverified local reference for manual checks. It does not connect an account or place an order.';
+      else if (kind === 'ad_draft') note = 'Prepares a local campaign draft. Provider credentials are not needed; publishing and ad spend are unavailable.';
+      else note = status.configured === true ? 'Server credentials are configured. A completed read can verify access. This task cannot change provider data.' : 'Provider credentials are missing. You can save a proposal, but execution will be blocked until the administrator configures the account.';
+      byId('task-capability-note').textContent = note;
+    }
+    byId('task-kind').addEventListener('change',configureTaskForm);
+    byId('task-provider').addEventListener('change',updateProviderNote);
+    byId('task-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      var kind = byId('task-kind').value; var params = {}; var payload = {action:'create_task',kind:kind,params:params};
+      if (kind !== 'onboarding_plan') payload.provider = byId('task-provider').value;
+      if (kind === 'connector_sync') { params.limit = Number(byId('read-limit').value); params.page = Number(byId('read-page').value); if (payload.provider === 'cj') { if (byId('supplier-query').value.trim()) params.query = byId('supplier-query').value.trim(); if (byId('supplier-product-id').value.trim()) params.productId = byId('supplier-product-id').value.trim(); } }
+      if (kind === 'supplier_reference') { params.url = byId('reference-url').value.trim(); if (byId('reference-title').value.trim()) params.title = byId('reference-title').value.trim(); if (byId('reference-notes').value.trim()) params.notes = byId('reference-notes').value.trim(); }
+      if (kind === 'ad_draft') { params.headline = byId('ad-headline').value.trim(); params.description = byId('ad-description').value.trim(); params.destinationUrl = byId('ad-destination').value.trim(); params.budgetDaily = Number(byId('ad-budget').value); params.currency = byId('ad-currency').value.trim().toUpperCase(); }
+      var previousIds = new Set(workspace.tasks.map(function (task) { return task.id; }));
+      perform(payload,'Task proposal saved. Read the explanation and saved inputs before approving.',function (data) { var task = data.tasks.find(function (item) { return !previousIds.has(item.id); }); if (task) { var card = Array.from(byId('task-list').children).find(function (item) { return item.dataset.taskId === task.id; }); if (card) { card.querySelector('h3').focus(); card.scrollIntoView({block:'nearest'}); } } });
+    });
+    function taskStatusLabel(task) { if (task.status === 'succeeded') return modeLabels[task.result && task.result.mode] || 'Task completed'; return ({proposed:'Awaiting approval',approved:'Ready to execute',running:'Running · refresh to check',blocked:'Blocked',failed:'Failed'})[task.status] || task.status; }
+    function renderExplanation(explanation) {
+      var list = node('dl','explanation');
+      if (typeof explanation === 'string') { list.append(node('dt','','What this task does'),node('dd','',explanation)); return list; }
+      [['what','What will happen'],['why','Why'],['expectedImpact','Expected outcome'],['risks','Limits & risks']].forEach(function (pair) { if (!explanation || explanation[pair[0]] === undefined) return; list.appendChild(node('dt','',pair[1])); var value = explanation[pair[0]]; var detail = node('dd'); if (Array.isArray(value)) { var items = node('ul'); value.forEach(function (item) { items.appendChild(node('li','',textValue(item))); }); detail.appendChild(items); } else detail.textContent = textValue(value); list.appendChild(detail); });
+      return list;
+    }
+    function renderTasks() {
+      var list = byId('task-list'); clear(list);
+      byId('task-count').textContent = workspace.tasks.length + (workspace.tasks.length === 1 ? ' task' : ' tasks');
+      if (!workspace.tasks.length) { list.appendChild(node('p','empty-state','Start with a proposal. The server will explain its behavior before you can approve or execute it.')); return; }
+      workspace.tasks.slice().reverse().forEach(function (task) {
+        var card = node('article','task-card'); card.dataset.taskId = task.id;
+        var header = node('div','task-heading'); var heading = node('h3','',kindLabels[task.kind] || task.kind); heading.tabIndex = -1; header.append(heading,node('span','badge ' + task.status,taskStatusLabel(task))); card.appendChild(header);
+        if (task.provider) card.appendChild(node('p','subtle',(workspace.connectors[task.provider] && workspace.connectors[task.provider].label) || task.provider));
+        card.appendChild(node('p','task-steps','1 Explained → 2 Approve exact inputs → 3 Execute'));
+        card.appendChild(renderExplanation(task.explanation));
+        var saved = node('details'); saved.open = task.status === 'proposed'; saved.append(node('summary','','Saved task inputs'),node('pre','',JSON.stringify({kind:task.kind,provider:task.provider || null,params:task.params,profileSnapshot:task.profileSnapshot || undefined},null,2))); card.appendChild(saved);
+        if (task.result) { var result = node('div','result'); result.append(node('p','result-label',modeLabels[task.result.mode] || 'Stored task result'),node('p','',task.result.summary || 'Review the stored result.')); if (task.result.mode === 'uncertain' || task.result.code === 'reconciliation_required') result.appendChild(node('p','','An earlier run has an uncertain outcome. Reconcile it before starting a new task.'));
+          if (task.result.data !== undefined && task.result.data !== null) { var data = node('details'); data.append(node('summary','','Result details'),node('pre','',JSON.stringify(task.result.data,null,2))); result.appendChild(data); } card.appendChild(result); }
+        var controls = node('div','task-controls');
+        if (task.status === 'proposed') {
+          var checkLabel = node('label','check'); var check = node('input'); check.type = 'checkbox'; check.setAttribute('aria-label','I reviewed the explanation and saved inputs for this task'); checkLabel.append(check,node('span','','I reviewed the explanation and these saved inputs.'));
+          var approve = node('button','btn btn-primary','Approve exact task'); approve.type = 'button'; lockControl(approve,true); check.addEventListener('change',function () { lockControl(approve,!check.checked); }); approve.addEventListener('click',function () { perform({action:'approve_task',taskId:task.id},'Approval saved for this exact task. Execute it when you are ready.'); }); controls.append(checkLabel,approve);
+        } else if (task.status === 'approved') { var execute = node('button','btn btn-primary','Execute approved task'); execute.type = 'button'; execute.addEventListener('click',function () { perform({action:'execute_task',taskId:task.id},'Execution response saved. Review this task’s reported status and result.'); }); controls.appendChild(execute); }
+        else if (task.status === 'running') controls.appendChild(node('p','subtle','The server reports this task as running. Refresh to check its status; do not create a duplicate to retry it.'));
+        else if (task.status === 'blocked') controls.appendChild(node('p','subtle','This task did not complete. Review the reported limitation before proposing a new task.'));
+        else if (task.status === 'failed') controls.appendChild(node('p','subtle','This task failed. Review the stored result before proposing another task.'));
+        else controls.appendChild(node('p','subtle','Terminal result recorded by the server. This task will not run again.'));
+        card.appendChild(controls); list.appendChild(card);
+      });
+    }
+    function renderLessons() {
+      var grid = byId('lesson-grid'); clear(grid);
+      var curriculum = workspace.curriculum || {}; var lessons = Array.isArray(curriculum.lessons) ? curriculum.lessons : [];
+      byId('lesson-progress').textContent = (Number.isInteger(curriculum.completedCount) ? curriculum.completedCount : 0) + ' / ' + lessons.length + ' exercises completed' + (curriculum.level ? ' · ' + curriculum.level : '');
+      lessons.forEach(function (lesson,index) {
+        var card = node('article','lesson'); card.dataset.lessonId = lesson.id;
+        card.append(node('span','badge ' + lesson.status,({locked:'Locked',available:'Ready to practice',completed:'Exercise completed'})[lesson.status] || lesson.status),node('h3','',(index + 1) + '. ' + lesson.title),node('p','',lesson.description));
+        if (lesson.status === 'completed') { card.appendChild(node('p','completion',lesson.completionOutcome || 'Exercise completion recorded.')); if (lesson.completedAt) card.appendChild(node('p','prerequisites','Completed: ' + new Date(lesson.completedAt).toLocaleDateString())); grid.appendChild(card); return; }
+        if (!workspace.profile) card.appendChild(node('p','prerequisites','Save your founder profile to start the exercises.'));
+        else if (Array.isArray(lesson.prerequisites) && lesson.prerequisites.length) card.appendChild(node('p','prerequisites','Prerequisites: ' + lesson.prerequisites.map(function (id) { var prerequisite = lessons.find(function (item) { return item.id === id; }); return prerequisite ? prerequisite.title : id; }).join(', ') + '.'));
+        var form = node('form'); var fields = node('fieldset'); var unavailable = lesson.status !== 'available' || !workspace.profile; fields.disabled = unavailable; fields.dataset.locked = String(unavailable);
+        if (lesson.exercise && lesson.exercise.instructions) fields.appendChild(node('p','help',textValue(lesson.exercise.instructions)));
+        if (lesson.id === 'supplier_checks') {
+          fields.appendChild(node('legend','','Which evidence still needs independent verification?'));
+          ['demand','supplier_reliability'].forEach(function (value) { var label = node('label','check'); var input = node('input'); input.type = 'checkbox'; input.name = 'evidenceNeeded'; input.value = value; lockControl(input,unavailable); label.append(input,node('span','',evidenceLabels[value])); fields.appendChild(label); });
+        } else if (lesson.id === 'approval_safety') { var label = node('label','check'); var input = node('input'); input.type = 'checkbox'; input.name = 'acknowledgement'; input.value = 'approve_exact_payload'; input.required = true; lockControl(input,unavailable); label.append(input,node('span','','I understand that approval applies only to the exact saved task inputs.')); fields.appendChild(label); }
+        else { var definitions = lesson.exercise && Array.isArray(lesson.exercise.fields) ? lesson.exercise.fields : []; definitions.forEach(function (definition) { var field = node('div','field'); var label = node('label','',definition.label || definition.name); label.htmlFor = 'lesson-' + lesson.id + '-' + definition.name; var input = node('input'); input.id = label.htmlFor; input.name = definition.name; input.type = definition.type === 'number' ? 'number' : 'text'; input.required = true; if (input.type === 'number') { input.step = '0.01'; input.max = '1000000'; input.min = definition.name === 'margin' ? '-1000000' : definition.name === 'retailPrice' ? '0.01' : '0'; } else input.maxLength = 1000; lockControl(input,unavailable); field.append(label,input); fields.appendChild(field); }); }
+        var submit = node('button','btn btn-outline','Submit exercise'); submit.type = 'submit'; lockControl(submit,unavailable); fields.appendChild(submit); form.appendChild(fields);
+        form.addEventListener('submit',function (event) { event.preventDefault(); if (unavailable) return; var exercise = {}; if (lesson.id === 'supplier_checks') exercise.evidenceNeeded = Array.from(form.querySelectorAll('input[name="evidenceNeeded"]:checked')).map(function (input) { return input.value; }); else if (lesson.id === 'approval_safety') exercise.acknowledgement = form.elements.namedItem('acknowledgement').checked ? 'approve_exact_payload' : ''; else Array.from(form.querySelectorAll('input')).forEach(function (input) { exercise[input.name] = input.type === 'number' ? Number(input.value) : input.value.trim(); }); perform({action:'complete_lesson',lessonId:lesson.id,exercise:exercise},'Exercise completion saved. Review the progress and next prerequisite reported by the server.'); });
+        card.appendChild(form); grid.appendChild(card);
+      });
+      if (!lessons.length) grid.appendChild(node('p','subtle','No learning exercises were reported by the server.'));
+    }
+    addObservation();
   })();
 
-  /* ── Load onboarding plan from API (static fallback) ── */
-  var FALLBACK_STEPS = [
-    'Pick your niche and hero product',
-    'Connect your Stripe keys',
-    'Import supplier products',
-    'Generate landing pages and ad assets'
-  ];
-
   async function loadOnboarding() {
-    var steps = FALLBACK_STEPS;
-    try {
-      var r = await fetch('/api/onboarding/plan');
-      if (r.ok) {
-        var d = await r.json();
-        if (Array.isArray(d.steps) && d.steps.length) steps = d.steps;
-      }
-    } catch (_) {}
-    var grid = document.createElement('div');
-    grid.className = 'steps-grid';
-    steps.forEach(function (s, i) {
-      var card = document.createElement('div');
-      card.className = 'step-card';
-      card.setAttribute('role', 'article');
-      card.setAttribute('aria-label', 'Step ' + (i + 1) + ': ' + s);
-      card.innerHTML =
-        '<div class="step-num" aria-hidden="true">' + (i + 1) + '</div>' +
-        '<h3>' + s + '</h3>' +
-        '<p>Your AI mentor guides you through this step, explains every decision, and flags what needs your approval before acting.</p>';
-      grid.appendChild(card);
-    });
     var container = document.getElementById('onboarding-steps');
-    container.innerHTML = '';
-    container.appendChild(grid);
+    var feedback = document.getElementById('plan-feedback');
+    var retry = document.getElementById('retry-plan');
+    feedback.hidden = true; retry.hidden = true;
+    container.textContent = 'Loading public checklist…';
+    try {
+      var response = await fetch('/api/onboarding/plan', {cache:'no-store'});
+      if (!response.ok) throw new Error('unavailable');
+      var data = await response.json();
+      if (!Array.isArray(data.steps) || !data.steps.length) throw new Error('invalid');
+      var grid = document.createElement('div'); grid.className = 'steps-grid';
+      data.steps.forEach(function (step,index) { var card = document.createElement('article'); card.className = 'step-card'; var number = document.createElement('div'); number.className = 'step-num'; number.setAttribute('aria-hidden','true'); number.textContent = String(index + 1); var heading = document.createElement('h3'); heading.textContent = String(step); var description = document.createElement('p'); description.textContent = 'Plan this step, check the available capabilities, and review tasks before approval.'; card.append(number,heading,description); grid.appendChild(card); });
+      container.replaceChildren(grid);
+    } catch (_) { container.textContent = 'Public checklist unavailable.'; feedback.textContent = 'The public plan could not be loaded. Retry when the API is available.'; feedback.hidden = false; retry.hidden = false; }
   }
-
-  /* ── Live health check ── */
+  document.getElementById('retry-plan').addEventListener('click',loadOnboarding);
   async function checkHealth() {
     var grid    = document.getElementById('health-grid');
     var overall = document.getElementById('overall-status');

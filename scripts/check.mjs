@@ -13,4 +13,4 @@ function check(directory) {
   }
 }
 for (const directory of ['api', 'apps', 'workers', 'packages', 'scripts', 'tests']) check(directory);
-console.log('Static dashboard and JavaScript syntax verified.');
+console.log('Application, API, worker, and connector JavaScript syntax verified.');

@@ -9,14 +9,24 @@
     "packages/*/*"
   ],
   "scripts": {
-    "dev:web": "npm --workspace @hmo/web run dev",
-    "dev:api": "npm --workspace @hmo/api run dev",
-    "dev:workers": "npm --workspace @hmo/workers run dev",
-    "build": "node scripts/check.mjs",
-    "test": "node --test tests/*.test.mjs"
+    "dev:web": "node --env-file-if-exists=.env apps/web/src/server.js",
+    "dev:api": "node --env-file-if-exists=.env apps/api/src/server.js",
+    "dev:workers": "node --env-file-if-exists=.env workers/index.js",
+    "worker:once": "node --env-file-if-exists=.env workers/index.js --once",
+    "db:setup": "node --env-file-if-exists=.env apps/api/src/workspace-schema.js",
+    "build": "node scripts/check.mjs && npm run build --workspace @hmo/api && npm run build --workspace @hmo/web",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "node tests/dashboard.browser.mjs"
+  },
+  "engines": {
+    "node": ">=22"
   },
   "dependencies": {
     "@hmo/shopify-connector": "*",
-    "@hmo/stripe-connector": "*"
+    "@hmo/stripe-connector": "*",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "playwright": "^1.64.0"
   }
 }
