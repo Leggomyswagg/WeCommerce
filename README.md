@@ -2,7 +2,25 @@
 
 An AI system that **builds and runs an e-commerce business** while simultaneously **teaching the founder** at every step.
 
-## What this project delivers
+## Current working version
+
+The founder dashboard now saves an authenticated onboarding brief, compares
+contribution margins from supplied costs, and runs an Explain → Approve → Execute
+workflow. Approved tasks use store/supplier/advertising reads or clearly labeled
+local guidance, supplier references, and campaign briefs. Lessons validate
+exercises and unlock the local campaign-draft control.
+
+Local development persists in `.wecommerce/`; hosted use requires PostgreSQL,
+explicit schema setup, and `WE_COMMERCE_AUTH_TOKEN`. Provider secrets stay on the
+server. Missing credentials block reads, and interrupted tasks require
+reconciliation instead of automatic replay. This is a single-founder workspace,
+not a multi-tenant authentication or billing system.
+
+See [setup and capability details](docs/NEXT_BUILD_STEPS.md). The roadmap below
+describes the larger product vision; automated store creation, supplier purchases,
+product publication, live advertising, and paid subscriptions are not implemented.
+
+## Product vision
 
 This repository scaffolds a one-stop AI platform that:
 
@@ -136,10 +154,16 @@ Certain decisions must be routed to founder approval:
 
 ## Next build steps
 
-1. Build API endpoints for onboarding, niche scoring, and task orchestration.
-2. Implement Shopify/WooCommerce store connectors.
-3. Add Alibaba/CJ dropshipping connector adapters.
-4. Add ad platform connectors (Google Ads, Meta, TikTok).
-5. Add Founder Dashboard with Explain/Approve/Execute UX.
-6. Add competency progression engine and curriculum unlocks.
+The six documented steps now have the following concrete implementations:
+
+1. Authenticated onboarding, observed-cost margin scoring, and persisted task orchestration.
+2. Shopify and WooCommerce catalogue reads; store mutations remain gated future work.
+3. CJ catalogue/product reads and unverified Alibaba/marketplace sourcing references; no supplier purchases or fulfillment writes.
+4. Google Ads, Meta, and TikTok campaign reads plus local briefs; no publishing or spend.
+5. A working founder dashboard with explanations, immutable approvals, execution, and recovery.
+6. Validated lesson exercises, persisted prerequisites, and local campaign-draft unlocks.
+
+Live provider access, PostgreSQL integration, and merchant launch/fulfillment
+evidence remain unverified. [NEXT_BUILD_STEPS.md](docs/NEXT_BUILD_STEPS.md) records
+the limits and required setup.
 

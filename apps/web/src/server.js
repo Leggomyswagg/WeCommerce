@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { join, dirname } from 'node:path';
 import { routeApi } from '../../api/src/router.js';
+import { createWorkspaceHandler } from '../../api/src/workspace.js';
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 const port  = process.env.PORT || 3000;
@@ -14,10 +15,11 @@ try {
   dashboardHtml = '<html><body><h1>WeCommerce</h1><p>Dashboard not found — run from repo root.</p></body></html>';
 }
 
-export function createWebServer() {
+export function createWebServer(options = {}) {
+  const workspaceHandler = createWorkspaceHandler({ ...options, service: options.workspaceService });
   return http.createServer((req, res) => {
     if (req.url.startsWith('/api') || req.url.startsWith('/onboarding/plan')) {
-      if (routeApi(req, res)) return;
+      if (routeApi(req, res, { workspaceHandler })) return;
       res.writeHead(404, { 'content-type': 'application/json' });
       res.end(JSON.stringify({ error: 'not_found' }));
       return;

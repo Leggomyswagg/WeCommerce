@@ -1,5 +1,6 @@
 import { shopifyHealth } from '../../../packages/connectors/shopify/index.js';
 import { stripeHealth } from '../../../packages/connectors/stripe/index.js';
+import { workspaceHandler as defaultWorkspaceHandler } from './workspace.js';
 
 function sendJson(req, res, body) {
   res.setHeader('content-type', 'application/json; charset=utf-8');
@@ -24,10 +25,10 @@ export function healthHandler(req, res) {
 export function planHandler(req, res) {
   sendJson(req, res, {
     steps: [
-      'Pick niche and hero product',
-      'Connect Stripe keys',
-      'Import supplier products',
-      'Generate landing pages and ad assets'
+      'Estimate contribution margins and collect demand evidence',
+      'Check supplier identity, product claims, and fulfillment evidence',
+      'Review store, payment, policy, and launch requirements',
+      'Review and approve provider reads or clearly identified local drafts'
     ]
   });
 }
@@ -36,15 +37,16 @@ export function indexHandler(req, res) {
   sendJson(req, res, {
     service: 'we-commerce-api',
     ok: true,
-    endpoints: ['/api/health', '/api/onboarding/plan']
+    endpoints: ['/api/health', '/api/onboarding/plan', '/api/workspace']
   });
 }
 
-export function routeApi(req, res) {
+export function routeApi(req, res, { workspaceHandler = defaultWorkspaceHandler } = {}) {
   const pathname = new URL(req.url, 'http://localhost').pathname;
   const handler = {
     '/api': indexHandler,
     '/api/health': healthHandler,
+    '/api/workspace': workspaceHandler,
     '/health': healthHandler,
     '/api/onboarding/plan': planHandler,
     '/onboarding/plan': planHandler
